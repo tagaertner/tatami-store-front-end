@@ -10,8 +10,6 @@ export type CartItem = {
   title: string;
   price: string;
   amount: number;
-  productColor: string;
-  company: string;
 };
 
 export type CartState = {
@@ -27,7 +25,6 @@ export type Product = {
   id: number;
   attributes: {
     category: string;
-    company: string;
     createdAt: string;
     description: string;
     featured: boolean;

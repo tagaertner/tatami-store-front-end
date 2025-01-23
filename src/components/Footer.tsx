@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../hooks/hooks';
+
 
 const Footer = () => {
+  const user = useAppSelector((state) => state.userState.user);
+
   const footerLinks = [
     { label: 'About', href: '/about' },
     { label: 'Contact Us', href: '/contact' },
@@ -9,23 +13,22 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-muted py-8 mt-auto">
-      <div className="align-element">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="bg-muted mt-auto">
+      <div className="align-element py-2">
+        <div className="flex gap-x-2 sm:gap-x-8 justify-center">
           {footerLinks.map((link) => (
-            <div key={link.label} className="flex flex-col items-center md:items-start">
-              <Link 
-                to={link.href}
-                className="capitalize font-light tracking-wide hover:text-primary transition-colors"
-              >
-                {link.label}
-              </Link>
-            </div>
+            <Link 
+              key={link.label}
+              to={link.href}
+              className="text-xs sm:text-sm capitalize font-light tracking-wide hover:text-primary transition-colors"
+            >
+              {link.label}
+            </Link>
           ))}
         </div>
-        <div className="border-t border-muted-foreground/20 mt-8 pt-8 text-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Tatami All rights reserved.
+        <div className="border-t border-muted-foreground/20 mt-4 pt-2 text-center">
+          <p className="text-xs sm:text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Tatami{user ? ` - ${user.username}` : ''} All rights reserved.
           </p>
         </div>
       </div>

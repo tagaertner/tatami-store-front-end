@@ -9,11 +9,13 @@ import FormCheckbox from './FormCheckbox';
 
 function Filters() {
   const { meta, params } = useLoaderData() as ProductsResponseWithParams;
-  const { search, company, category, shipping, order, price } = params;
+  const { search, category, shipping, order, price } = params;
 
   return (
-    <Form className='border rounded-md px-8 py-4 grid gap-x-4 gap-y-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
-      {/* search */}
+    // <Form className='border rounded-md px-8 py-4 grid gap-x-4 gap-y-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
+    // <Form className='border rounded-md px-8 py-4 grid gap-y-4'>
+    <Form className='mt-1 border rounded-mt-4 boarder md px-8 py-4 grid gap-x-4 gap-y-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-1 items-center lg:sticky lg:top-20'>
+    {/* search */}
       <FormInput
         type='search'
         label='search product'
@@ -27,13 +29,7 @@ function Filters() {
       options={meta.categories}
       defaultValue={category}
     />
-      {/* COMPANIES */}
-    <FormSelect
-      label='select company'
-      name='company'
-      options={meta.companies}
-      defaultValue={company}
-    />
+ 
     {/* ORDER */}
     <FormSelect
       label='order by'
@@ -48,11 +44,13 @@ function Filters() {
       defaultValue={price}
     />
     {/* SHIPPING*/}
+    <div>
     <FormCheckbox
       label='free shipping' 
       name='shipping' 
       defaultValue={shipping}
     />
+    </div>
 
       <Button type='submit' size='sm' className='self-end mb-2'>
         search

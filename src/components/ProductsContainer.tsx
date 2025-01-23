@@ -16,7 +16,7 @@ return (
     <>
       {/* HEADER */}
       <section>
-        <div className='flex justify-between items-center mt-8 '>
+        <div className='flex justify-between items-center px-2 sm:px-0'>
           <h4 className='font-medium text-md'>
             {totalProducts} product{totalProducts > 1 && 's'}
           </h4>
