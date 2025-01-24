@@ -27,3 +27,5 @@ export {default as CartTotals} from "./CartTotals";
 export {default as SubmitBtn} from './SubmitBtn';
 export {default as Footer} from './Footer'
 export {default as CheckoutForm} from './CheckoutForm';
+export {default as OrdersList} from './OrdersList';
+export {default as ComplexPaginationContainer} from './ComplexPaginationContainer';

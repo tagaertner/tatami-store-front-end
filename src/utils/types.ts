@@ -29,7 +29,23 @@ export type Checkout = {
   cartItems: CartItem[];
   numItemsInCart: number;
 };
+export type OrdersResponse = {
+  data:Order[];
+  meta: {
+    pagination: Pagination;
+  };
+};
 
+export type Order = {
+  id: string;
+  attributes: {
+    name: string;
+    address: string;
+    numItemsInCart: number;
+    orderTotal: string;
+    createdAt: string;
+  };
+};
 export type Product = {
   id: number;
   attributes: {
@@ -74,5 +90,7 @@ export type ProductsResponseWithParams = ProductsResponse & { params: Params };
 
 export type SingleProductResponse = {
   data: Product;
-  meta: {};
+  meta: {
+    pagination: Pagination;
+  };
 };
