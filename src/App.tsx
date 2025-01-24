@@ -18,6 +18,8 @@ import {loader as productsLoader} from './pages/Products'
 import {loader as singleProductLoader} from './pages/SingleProduct'
 import {loader as checkoutLoader } from './pages/Checkout';
 import {loader as ordersLoader} from './pages/Orders';
+import OrderConfirmation, {loader as orderConfirmationLoader } from './pages/OrderConfirmation';
+
 // actions
 import { action as registerUser } from './pages/Register';
 import { action as loginUser } from './pages/Login';
@@ -66,6 +68,12 @@ const router = createBrowserRouter ([
         errorElement: <ErrorElement/>,
         loader: checkoutLoader(store),
         action: checkoutAction(store),
+      },
+      {
+        path:'order-confirmation',
+        element:<OrderConfirmation/>,
+        errorElement: <ErrorElement/>,
+        loader: orderConfirmationLoader(store),
       },
       {
         path:'orders',
