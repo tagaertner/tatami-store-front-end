@@ -5,13 +5,15 @@ import { customFetch, formatAsDollars, type Checkout } from '../utils';
 import { toast } from '../components/ui/use-toast';
 import { clearCart } from '../features/cart/cartSlice';
 import { ReduxStore } from '../store';
+import { setOrderDetails } from '../features/order/orderSlice';
+
 
 export const action = 
     (store:ReduxStore):ActionFunction =>
     async ({ request }): Promise<null | Response> =>{
       const formData = await request.formData();
       const name = formData.get('name') as string;
-      const address = formData.get('name') as string;
+      const address = formData.get('address') as string;
 
       if (!name || !address) {
         toast({ description: 'please fill out all fields' });
@@ -44,8 +46,9 @@ export const action =
             }
           );
           store.dispatch(clearCart());
-          toast({ description: 'order placed' });
-          return redirect('/orders');
+          store.dispatch(setOrderDetails(info)); 
+          toast({ description: 'order placed successfully!' });
+          return redirect('/order-confirmation');
         } catch (error) {
           console.log(error)
           toast({ description: 'order failed' });
