@@ -1,6 +1,6 @@
 import { useRouteError, Link, isRouteErrorResponse } from 'react-router-dom';
 import { Button } from '../components/ui/button';
-
+import four from '../assets/images/four.gif';
 
 const Error = () => {
   // type:unknown
@@ -14,6 +14,14 @@ const Error = () => {
           <h1 className='mt-4 text-3xl font-bold tracking-tight sm:text-5xl'>
             Page not found
           </h1>
+
+    <div className="flex flex-col items-center gap-4 pt-8"> {/* Center content */}
+        <img 
+          src={four}
+          alt="error"
+          className="w-full h-full object-cover rounded-lg aspect-video"
+        />
+    </div>
           <p className='mt-6 text-lg leading-7'>
             Sorry, we couldn’t find the page you’re looking for.
           </p>
