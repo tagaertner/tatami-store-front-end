@@ -18,16 +18,6 @@ export const loader: LoaderFunction = async ({
   return { ...response.data, params };
 };
 
-// function Products () {
-//   return (
-//     <>
-//       <Filters />
-//       <ProductsContainer />
-//       <PaginationContainer />
-//     </>
-//   );
-// };
-
 function Products() {
   return ( 
     // <div className="flex flex-col items-center gap-4"> {/* Center content */}

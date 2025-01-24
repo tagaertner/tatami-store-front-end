@@ -19,7 +19,6 @@ export const loader =
     return null;
   };
 
-
 const OrderConfirmation = () => {
   const { orderDetails } = useAppSelector((state) => state.orderState);
   const { user } = useAppSelector((state) => state.userState);
