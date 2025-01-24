@@ -19,7 +19,7 @@ import {loader as singleProductLoader} from './pages/SingleProduct'
 import {loader as checkoutLoader } from './pages/Checkout';
 import {loader as ordersLoader} from './pages/Orders';
 import OrderConfirmation, {loader as orderConfirmationLoader } from './pages/OrderConfirmation';
-
+import ContactUs, {loader as contactLoader} from './pages/ContactUs';
 // actions
 import { action as registerUser } from './pages/Register';
 import { action as loginUser } from './pages/Login';
@@ -68,6 +68,11 @@ const router = createBrowserRouter ([
         errorElement: <ErrorElement/>,
         loader: checkoutLoader(store),
         action: checkoutAction(store),
+      },
+      {
+        path: '/contact',
+        element: <ContactUs />,
+        loader: contactLoader(store)  // If you're using the loader
       },
       {
         path:'order-confirmation',

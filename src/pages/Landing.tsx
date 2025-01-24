@@ -9,16 +9,6 @@ export const loader: LoaderFunction = async (): Promise<ProductsResponse> => {
   return { ...response.data };
 };
 
-// function Landing() {
-//   const result = useLoaderData() as ProductsResponse;
-//   console.log(result);
-
-//   return (
-//     <>
-//       <Hero />
-//       <FeaturedProducts />
-//     </>
-//   );
 function Landing() {
   const result = useLoaderData() as ProductsResponse;
 
