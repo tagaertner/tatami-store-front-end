@@ -9,7 +9,7 @@ function CartTotals() {
   );
 
   return (
-    <Card className='p-12 bg-muted scale-122'>
+    <Card className='w-full max-w-4xl p-12 bg-muted scale-122'>
       <CartTotalRow label='Subtotal' amount={cartTotal} />
       <CartTotalRow label='Shipping' amount={shipping} />
       <CartTotalRow label='Tax' amount={tax} />

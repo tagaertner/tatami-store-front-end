@@ -57,16 +57,28 @@ export const action =
   };
 
   function CheckoutForm() {
-    return <Form method='post'className='flex flex-col gap-y-4'>
-    <h4 className='font-medium text-xl mb-4'>Shipping Information</h4>
-    <FormInput label='first name' name ='name' type='text'/>
-    <FormInput label='address' name ='address' type='text'/>
-    <div className='mt-4'>
-        <SubmitBtn text='Place Your Order' />
+    return (
+      <div className="space-y-8">
+        <Form method='post' className='flex flex-col gap-y-4'>
+          <h4 className='font-medium text-xl mb-4'>Shipping Information</h4>
+          <FormInput label='first name' name='name' type='text'/>
+          <FormInput label='last name' name='name' type='text'/>
+          <FormInput label='address' name='address' type='text'/>
+        </Form>
+  
+        <Form className='flex flex-col gap-y-4'>
+          <h4 className='font-medium text-xl mb-4'>Payment Information</h4>
+          <FormInput label='Card Number' name='cardNumber' type='text' placeholder='1234 5678 9012 3456'/>
+          <div className="grid grid-cols-2 gap-4">
+            <FormInput label='Expiry Date' name='expiry' type='text' placeholder='MM/YY'/>
+            <FormInput label='CVV' name='cvv' type='text' placeholder='123'/>
+          </div>
+          <div className="mt-4">
+            <SubmitBtn text='Place Your Order' />
+          </div>
+        </Form>
       </div>
-    
-    </Form>
-   
-  };
+    );
+  }
   
   export default CheckoutForm
