@@ -1,5 +1,5 @@
 import { useAppSelector } from '../lib/hooks';
-import { CheckoutForm, SectionTitle, CartTotals } from '../components';
+import { CheckoutForm, SectionTitle, CartTotals, CreditCardForm} from '../components';
 import { LoaderFunction, redirect } from 'react-router-dom';
 import { toast } from '../components/ui/use-toast';
 import { type ReduxStore } from '../store';
@@ -28,6 +28,7 @@ const Checkout = () => {
       <div className='mt-8 grid gap-8  md:grid-cols-2 items-start'>
         <CheckoutForm />
         <CartTotals />
+        <CreditCardForm/>
       </div>
     </>
   );
