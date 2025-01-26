@@ -4,7 +4,7 @@ import SectionTitle from './SectionTitle';
 function FeaturedProducts () {
   return (
     <section className='pt-24 '>
-      <SectionTitle text='featured products' />
+      <SectionTitle text='PromotionalProduct' />
       <ProductsGrid />
     </section>
   );

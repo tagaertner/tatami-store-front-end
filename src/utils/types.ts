@@ -59,7 +59,6 @@ export type Product = {
     shipping: boolean;
     title: string;
     updatedAt: string;
-    colors: string[];
   };
 };
 
@@ -85,6 +84,8 @@ export type Params = {
   shipping?: string;
   page?: number;
 };
+
+
 
 export type ProductsResponseWithParams = ProductsResponse & { params: Params };
 

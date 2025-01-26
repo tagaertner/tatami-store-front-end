@@ -73,7 +73,7 @@ const router = createBrowserRouter ([
       {
         path: '/contact',
         element: <ContactUs />,
-        loader: contactLoader(store)  // If you're using the loader
+        loader: contactLoader(store)  
       },
       {
         path:'order-confirmation',
