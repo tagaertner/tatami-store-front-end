@@ -1,5 +1,5 @@
 import ProductsGrid from './ProductsGrid';
-import SectionTitle from './SectionTitle';
+import SectionTitle from '../SectionTitle';
 
 function FeaturedProducts () {
   return (
