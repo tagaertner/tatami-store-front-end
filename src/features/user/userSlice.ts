@@ -1,15 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { toast } from '../../components/ui/use-toast'
+import { User, UserState } from '../../utils/types';
 
-export type User = {
-  username: string;
-  jwt: string; 
-};
-// jwt is json web token
-
-type UserState = {
-  user: User | null;
-};
 
 
 const getUserFromLocalStorage = (): User | null => {

@@ -84,8 +84,17 @@ export type Params = {
   shipping?: string;
   page?: number;
 };
-
-
+export type User = {
+  username: string;
+  jwt: string;
+  email: string;
+};
+export type UserInfoProps = {
+  user: User;
+};
+export interface UserState {
+  user: User | null;
+}
 
 export type ProductsResponseWithParams = ProductsResponse & { params: Params };
 

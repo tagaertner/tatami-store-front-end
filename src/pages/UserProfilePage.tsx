@@ -1,19 +1,10 @@
 // pages/UserProfilePage.tsx
-
 import { useAppSelector } from '../hooks/hooks';
 import { Navigate } from 'react-router-dom';
-import { Setting } from '../components';
-import { UserInfo} from '../components';
-import { OrderHistory } from '../components';
+import { Setting, UserInfo, OrderHistory } from '../components';
 
-interface UserInfoProps {
-  user: {
-    username: string;
-    email?: string;  // Make email optional
-  }
-}
 const UserProfilePage = () => {
-  const { user } = useAppSelector((state) => state.userState);
+  const { user } = useAppSelector(state => state.userState);
 
   if (!user) {
     return <Navigate to='/login' />;
