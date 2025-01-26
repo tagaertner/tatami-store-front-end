@@ -1,7 +1,7 @@
-import { useAppSelector } from '../hooks/hooks';
-import { formatAsDollars } from '../utils';
-import { Card, CardTitle } from '../components/ui/card';
-import { Separator } from './ui/separator';
+import { useAppSelector } from '../../lib/hooks';
+import { formatAsDollars } from '../../utils';
+import { Card, CardTitle } from '../../components/ui/card';
+import { Separator } from '../ui/separator';
 
 function CartTotals() {
   const { cartTotal, shipping, tax, orderTotal } = useAppSelector(

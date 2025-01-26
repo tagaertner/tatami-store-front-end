@@ -1,19 +1,15 @@
 import { Form } from 'react-router-dom';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Input } from '../../components/ui/input';
+import { Label } from '../../components/ui/label';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../components/ui/select';
-import { states } from '../data/states';
-
-// import SubmitBtn from './SubmitBtn';
-
-
+} from '../../components/ui/select';
+import { states } from '../../data/states';
 
 function CheckoutForm() {
   return (
@@ -79,10 +75,6 @@ function CheckoutForm() {
               required 
             />
           </div>
-
-          {/* <div className='mt-6'>
-            <SubmitBtn text='Place Your Order' />
-          </div> */}
         </Form>
       </CardContent>
     </Card>
