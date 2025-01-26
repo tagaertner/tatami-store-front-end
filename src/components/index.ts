@@ -28,4 +28,7 @@ export {default as SubmitBtn} from './SubmitBtn';
 export {default as Footer} from './Footer'
 export {default as CheckoutForm} from './CheckoutForm';
 export {default as OrdersList} from './OrdersList';
-export {default as ComplexPaginationContainer} from './ComplexPaginationContainer';
+export {default as OrderHistory} from'./profile /OrderHistory';
+export { default as Setting } from './profile /Setting'; 
+export {default as UserInfo} from './profile /UserInfo';
+export { default as ComplexPaginationContainer } from './ComplexPaginationContainer';
