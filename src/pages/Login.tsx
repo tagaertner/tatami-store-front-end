@@ -14,12 +14,18 @@ import { type ReduxStore } from '../store';
 import { loginUser } from '../features/user/userSlice';
 import { useAppDispatch } from '../hooks/hooks';
 import { AxiosResponse } from 'axios';
+import { AxiosError } from 'axios';
 
 export const action = 
   (store: ReduxStore): ActionFunction =>
   async ({ request }): Promise<Response | null> => {
     const formData = await request.formData();
-    const data = Object.fromEntries(formData);
+    // const data = Object.fromEntries(formData);
+    const data = {
+      identifier: formData.get('identifier'),
+      password: formData.get('password')
+    };
+
     try {
       const response: AxiosResponse = await customFetch.post(
         '/auth/local',
@@ -30,7 +36,10 @@ export const action =
       store.dispatch(loginUser({ username, jwt }));
       return redirect('/');
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      if (error instanceof AxiosError) {
+        console.log('Error details:', error.response?.data);
+      }
       toast({ description: 'Login Failed' });
       return null;
     }

@@ -51,7 +51,7 @@ function SingleProduct() {
       </Button>
       <Separator orientation='vertical' />
       <Button asChild variant='link' size='sm'>
-        <Link to='/products'>Products</Link>
+        <Link to='/products'>Go Back To Products</Link>
       </Button>
     </div>
     {/* PRODUCT */}

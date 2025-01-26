@@ -4,6 +4,7 @@ import { LoaderFunction, redirect } from 'react-router-dom';
 import { toast } from '../components/ui/use-toast';
 import { type ReduxStore } from '../store';
 
+
 export const loader =
   (store: ReduxStore): LoaderFunction =>
   async (): Promise<Response | null> => {

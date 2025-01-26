@@ -20,6 +20,7 @@ import {loader as checkoutLoader } from './pages/Checkout';
 import {loader as ordersLoader} from './pages/Orders';
 import OrderConfirmation, {loader as orderConfirmationLoader } from './pages/OrderConfirmation';
 import ContactUs, {loader as contactLoader} from './pages/ContactUs';
+import UserProfilePage  from './pages/UserProfilePage'
 // actions
 import { action as registerUser } from './pages/Register';
 import { action as loginUser } from './pages/Login';
@@ -86,6 +87,12 @@ const router = createBrowserRouter ([
         errorElement: <ErrorElement/>,
         loader: ordersLoader(store),
       },
+      {
+        path: 'profile',
+        element: <UserProfilePage />,
+        errorElement: <ErrorElement/>
+      },
+     
     
     ]
   },
@@ -101,7 +108,7 @@ const router = createBrowserRouter ([
      errorElement: <Error/>,
       action: registerUser,
   },
- 
+
  
 ])
 function App() {
