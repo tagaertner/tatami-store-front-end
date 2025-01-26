@@ -4,13 +4,13 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '../components/ui/carousel';
-import { Card, CardContent } from '../components/ui/card';
+} from '../ui/carousel';
+import { Card, CardContent } from '../ui/card';
 
-import hero1 from '../assets/hero1.webp';
-import hero2 from '../assets/hero2.webp';
-import hero3 from '../assets/hero3.webp';
-import hero4 from '../assets/hero4.webp';
+import hero1 from '../../assets/hero1.webp';
+import hero2 from '../../assets/hero2.webp';
+import hero3 from '../../assets/hero3.webp';
+import hero4 from '../../assets/hero4.webp';
 
 const carouselImages = [hero1, hero2, hero3, hero4];
 
