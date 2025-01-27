@@ -1,11 +1,11 @@
 import { useLoaderData } from 'react-router-dom';
-import ProductsGrid from './landing/ProductsGrid';
-import ProductsList from './ProductsList';
+import ProductsGrid from '../landing/ProductsGrid';
+import ProductsList from '../products/ProductsList';
 import { useState } from 'react';
 import { LayoutGrid, List } from 'lucide-react';
-import { ProductsResponse } from '../utils';
-import { Button } from './ui/button';
-import { Separator } from './ui/separator'
+import { ProductsResponse } from '../../utils';
+import { Button } from '../ui/button';
+import { Separator } from '../ui/separator'
 
 function ProductsContainer() {
   const { meta } = useLoaderData() as ProductsResponse;
