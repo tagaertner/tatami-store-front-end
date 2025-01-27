@@ -1,7 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from './ui/button';
 import { useAppDispatch, useAppSelector } from '../lib/hooks';
-
 import { logoutUser } from '../features/user/userSlice';
 import { clearCart } from '../features/cart/cartSlice';
 import { useToast } from './ui/use-toast';

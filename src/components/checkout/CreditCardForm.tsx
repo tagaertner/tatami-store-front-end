@@ -3,7 +3,46 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { Input } from '../../components/ui/input';
 import { Label } from '../../components/ui/label';
 import { Button } from '../../components/ui/button';
+import { clearCart } from '../../features/cart/cartSlice';
+import { redirect } from 'react-router-dom'
+import { ReduxStore } from '../../store';
+// import { Form, useActionData, useNavigation } from 'react-router-dom';
 
+export const action = (store: ReduxStore) => async ({ request }: { request: Request }) => {
+  const formData = await request.formData();
+  // const { cartState } = store.getState();
+ 
+ 
+  try {
+    const response = await fetch('/api/create-payment-intent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        // amount: orderTotal,
+        paymentMethod: {
+          card: formData.get('cardNumber'),
+          exp_month: formData.get('expiry')?.toString().split('/')[0],
+          exp_year: formData.get('expiry')?.toString().split('/')[1],
+          cvc: formData.get('cvc')
+        },
+        customer: formData.get('name')
+      })
+    });
+ 
+    const { paymentIntent } = await response.json();
+    if (!paymentIntent || paymentIntent.status !== 'succeeded') {
+      throw new Error('Payment failed');
+    }
+ 
+    store.dispatch(clearCart());
+    return redirect('/order-confirmation');
+    
+  } catch (error) {
+    return { error: error instanceof Error ? error.message :'Payment failed' 
+
+    }
+  }
+ };
 
 function CreditCardForm() {
   return (
