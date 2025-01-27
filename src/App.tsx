@@ -22,9 +22,10 @@ import OrderConfirmation, {loader as orderConfirmationLoader } from './pages/Ord
 import ContactUs, {loader as contactLoader} from './pages/ContactUs';
 import UserProfilePage  from './pages/UserProfilePage'
 // actions
+
 import { action as registerUser } from './pages/Register';
 import { action as loginUser } from './pages/Login';
-import {action as checkoutAction} from './components/CheckoutForm';
+import { action as checkoutAction } from './components/checkout/CheckoutForm';
 import {store} from './store';
 
 
@@ -68,7 +69,7 @@ const router = createBrowserRouter ([
         element: <Checkout/>,
         errorElement: <ErrorElement/>,
         loader: checkoutLoader(store),
-        action: checkoutAction(store),
+        action: checkoutAction,
       },
       {
         path: '/contact',
