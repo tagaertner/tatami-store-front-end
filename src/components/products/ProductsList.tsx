@@ -8,7 +8,7 @@ function ProductsList() {
   return (
      <div className='mt-12 grid gap-y-8'>
       {products.map((product) => {
-        const { title, price, image, company } = product.attributes;
+        const { title, price, image } = product.attributes;
         const dollarsAmount = formatAsDollars(price);
 
         return (
@@ -20,10 +20,10 @@ function ProductsList() {
                   alt={title}
                   className='h-64 w-full md:h-48  md:w-48  rounded-md object-cover'
                 />
-                <div>
+                {/* <div>
                   <h2 className='text-xl font-semibold capitalize'>{title}</h2>
                   <h4>{company}</h4>
-                </div>
+                </div> */}
                 <p className='text-primary md:ml-auto'>{dollarsAmount}</p>
               </CardContent>
             </Card>
