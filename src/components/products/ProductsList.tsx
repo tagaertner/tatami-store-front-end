@@ -1,6 +1,6 @@
-import { formatAsDollars, type ProductsResponse } from '../utils';
+import { formatAsDollars, type ProductsResponse } from '../../utils';
 import { Link, useLoaderData } from 'react-router-dom';
-import { Card, CardContent } from './ui/card';
+import { Card, CardContent } from '../ui/card';
 
 function ProductsList() {
   const { data: products } = useLoaderData() as ProductsResponse;
