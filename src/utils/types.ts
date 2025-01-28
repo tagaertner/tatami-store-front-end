@@ -104,3 +104,7 @@ export type SingleProductResponse = {
     pagination: Pagination;
   };
 };
+export interface Feature {
+  title: string;
+  description: string;
+}

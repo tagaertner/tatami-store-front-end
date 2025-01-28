@@ -1,4 +1,8 @@
 export {default as Header} from "./Header";
+export { default as AboutHero } from './about/AboutHero';
+export { default as AboutStory } from './about/AboutStory';
+export { default as AboutFeatures } from './about/AboutFeatures';
+export { default as AboutValues } from './about/AboutValues';
 export {default as Navbar} from "./Navbar";
 export {default as Logo} from "./Logo";
 export {default as NavLinks} from "./NavLinks";
@@ -29,9 +33,10 @@ export {default as Footer} from './Footer'
 export {default as CheckoutForm} from './checkout/CheckoutForm';
 export {default as OrdersList} from './OrdersList';
 export {default as OrderHistory} from'./profile /OrderHistory';
-export { default as Setting } from './profile /Setting'; 
+export { default as Setting } from './userProfile/Setting'; 
 export {default as UserInfo} from './profile /UserInfo';
 export { default as ComplexPaginationContainer } from './ComplexPaginationContainer';
 export {default as CategorySection} from './landing/CategorySection';
 export { default as CreditCardForm } from './checkout/CreditCardForm';
 export {default as SpecialOffers} from './landing/SpecialOffers';
+ 
