@@ -25,7 +25,9 @@ import UserProfilePage  from './pages/UserProfilePage'
 
 import { action as registerUser } from './pages/Register';
 import { action as loginUser } from './pages/Login';
-import { action as checkoutAction } from './components/checkout/CheckoutForm';
+import { checkoutAction } from './actions/checkoutActions';
+import { checkoutCartTotalAction } from './actions/checkoutCartTotalActions';
+
 import {store} from './store';
 
 
@@ -69,8 +71,18 @@ const router = createBrowserRouter ([
         element: <Checkout/>,
         errorElement: <ErrorElement/>,
         loader: checkoutLoader(store),
-        action: checkoutAction,
+        children:[{
+          path: 'address',
+          action: checkoutAction(store),
+        },
+        { 
+          path: 'payment',
+          action: checkoutCartTotalAction(store)
+
+          }
+        ]
       },
+
       {
         path: '/contact',
         element: <ContactUs />,

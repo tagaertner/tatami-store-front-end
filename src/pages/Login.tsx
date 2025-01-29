@@ -16,6 +16,7 @@ import { useAppDispatch } from '../hooks/hooks';
 import { AxiosResponse } from 'axios';
 import { AxiosError } from 'axios';
 
+
 export const action = 
   (store: ReduxStore): ActionFunction =>
   async ({ request }): Promise<Response | null> => {
@@ -32,8 +33,9 @@ export const action =
         data
       );
       const username = response.data.user.username;
+      const email = response.data.user.email;
       const jwt = response.data.jwt;
-      store.dispatch(loginUser({ username, jwt }));
+      store.dispatch(loginUser({ username, email, jwt }));
       return redirect('/');
     } catch (error) {
       // console.log(error);
@@ -50,13 +52,15 @@ function Login() {
 
   const loginAsGuestUser = async():Promise<void> =>{
     try {
-      const response:AxiosResponse = await customFetch.post('/auth/local', {
+      const response: AxiosResponse = await customFetch.post('/auth/local', {
         identifier: 'test@test.com',
         password: 'secret',
       });
       const username = response.data.user.username;
+      const email = response.data.user.email;
       const jwt = response.data.jwt;
-      dispatch(loginUser({ username, jwt }));
+      dispatch(loginUser({ username, email, jwt }));
+      dispatch(loginUser({ username, email, jwt }));
       navigate('/');
     } catch (error) {
       console.log(error);

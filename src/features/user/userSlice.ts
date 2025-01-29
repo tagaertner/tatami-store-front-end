@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { toast } from '../../components/ui/use-toast'
-import { User, UserState } from '../../utils/types';
+import { User, UserState, ShippingInfo } from '../../utils/types';
+
 
 
 
@@ -34,9 +35,25 @@ const userSlice = createSlice({
       // localStorage.clear()
       localStorage.removeItem('user');
     },
+    saveShippingAddress: (state, action: PayloadAction<ShippingInfo>) => {
+      if (state.user) {
+        if (!state.user.shippingInfo) {
+          state.user.shippingInfo = [];
+        }
+        // Add id to the address when saving
+        const addressWithId = {
+          ...action.payload,
+          id: crypto.randomUUID() // Generate unique ID
+        };
+        state.user.shippingInfo.push(addressWithId);
+        localStorage.setItem('user', JSON.stringify(state.user));
+        toast({ description: 'Address saved successfully' });
+      }
+    },
   },
 });
 
-export const { loginUser, logoutUser } = userSlice.actions;
+
+export const { loginUser, logoutUser, saveShippingAddress} = userSlice.actions;
 
 export default userSlice.reducer;

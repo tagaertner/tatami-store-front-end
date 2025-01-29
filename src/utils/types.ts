@@ -88,6 +88,7 @@ export type User = {
   username: string;
   jwt: string;
   email: string;
+  shippingInfo?: ShippingInfo[]; 
 };
 export type UserInfoProps = {
   user: User;
@@ -108,3 +109,32 @@ export interface Feature {
   title: string;
   description: string;
 }
+
+export interface ShippingInfo {
+  id?: string; 
+  name: string;
+  address: string;
+  address2?: string | null;
+  city: string;
+  state: string;
+  zipCode: string;
+  isDefault?: boolean;
+}
+
+export interface SavedShippingInfoProps {
+  onSelectShipping: (address: ShippingInfo) => void;
+  selectedShippingId: string;
+}
+export interface CheckoutFormData {
+  cardNumber: string;
+  expiry: string; 
+  cvc: string;
+  name: string;
+}
+
+export interface CartTotalRowProps {
+  label: string;
+  amount: number;
+  lastRow?: boolean;
+}
+
