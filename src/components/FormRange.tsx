@@ -3,12 +3,8 @@ import { useState } from 'react';
 
 import { Label } from './ui/label';
 import { Slider } from './ui/slider';
+import { FormRangeProps } from '../utils';
 
-type FormRangeProps = {
-  name: string;
-  label?: string;
-  defaultValue?: string;
-};
 
 function FormRange({ name, label, defaultValue }: FormRangeProps) {
   const step = 1000;

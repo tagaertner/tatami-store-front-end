@@ -1,3 +1,4 @@
+// 
 import {
   Pagination,
   PaginationContent,
@@ -6,23 +7,25 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from './ui/pagination';
-import {
-  ProductsResponseWithParams,
-  constructUrl,
-  constructPrevOrNextUrl,
-} from '../utils';
-
+import { type ProductsResponseWithParams } from '../utils';
+import { constructUrl, constructPrevOrNextUrl } from '../utils';
 import { useLoaderData, useLocation } from 'react-router-dom';
 
 function PaginationContainer() {
+  // Move all hooks to the top of the component
   const { meta } = useLoaderData() as ProductsResponseWithParams;
-  const { pageCount, page } = meta.pagination;
-
   const { search, pathname } = useLocation();
 
-  const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
+  // Then add your conditional checks
+  if (!meta?.pagination) {
+    return null;
+  }
+
+  const { pageCount, page } = meta.pagination;
 
   if (pageCount < 2) return null;
+
+  const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
 
   const renderPagination = pages.map((pageNumber) => {
     const isActive = pageNumber === page;
@@ -36,6 +39,7 @@ function PaginationContainer() {
       </PaginationItem>
     );
   });
+
   const { prevUrl, nextUrl } = constructPrevOrNextUrl({
     currentPage: page,
     pageCount,
@@ -57,4 +61,5 @@ function PaginationContainer() {
     </Pagination>
   );
 }
+
 export default PaginationContainer;

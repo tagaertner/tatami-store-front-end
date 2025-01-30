@@ -1,8 +1,21 @@
+// export type ProductsResponse = {
+//   data: Product[];
+//   meta: ProductsMeta;
+// };
+// change for python
 export type ProductsResponse = {
   data: Product[];
-  meta: ProductsMeta;
+  meta: {
+    pagination: {
+      total: number;
+      pageCount: number;
+      page: number;
+      pageSize: number;
+    };
+    categories: string[];
+    companies: string[];
+  };
 };
-
 export type CartItem = {
   cartID: string;
   productID: number;
@@ -29,13 +42,13 @@ export type Checkout = {
   cartItems: CartItem[];
   numItemsInCart: number;
 };
-export type OrdersResponse = {
-  data:Order[];
-  meta: {
-    pagination: Pagination;
-  };
-};
-
+// export type OrdersResponse = {
+//   data:Order[];
+//   meta: {
+//     pagination: Pagination;
+//   };
+// };
+// changed for python
 export type Order = {
   id: string;
   attributes: {
@@ -46,27 +59,66 @@ export type Order = {
     createdAt: string;
   };
 };
-export type Product = {
-  id: number;
+// export type Product = {
+//   id: number;
+//   attributes: {
+//     category: string;
+//     createdAt: string;
+//     description: string;
+//     featured: boolean;
+//     image: string;
+//     price: string;
+//     publishedAt: string;
+//     shipping: boolean;
+//     title: string;
+//     updatedAt: string;
+    
+//   };
+// };
+
+export type Product ={
+  id: string,
   attributes: {
-    category: string;
-    createdAt: string;
-    description: string;
-    featured: boolean;
-    image: string;
-    price: string;
-    publishedAt: string;
-    shipping: boolean;
-    title: string;
-    updatedAt: string;
-  };
+  description: string,
+  image: string,
+  is_active: boolean,
+  name: string,
+  price: number,
+  stock: number,
+}
+
 };
 
 export type ProductsMeta = {
+  pagination: {
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  };
   categories: string[];
   companies: string[];
-  pagination: Pagination;
 };
+
+
+export type FormRangeProps = {
+  label: string;
+  name: string;
+  defaultValue: string | number;
+}
+
+export type FormCheckboxProps = {
+  name: string;
+  label?: string;
+  defaultValue?: string | number | boolean; 
+};
+
+
+// export type ProductsMeta = {
+//   categories: string[];
+//   companies: string[];
+//   pagination: Pagination;
+// };
 
 export type Pagination = {
   page: number;
@@ -96,6 +148,7 @@ export type UserInfoProps = {
 export interface UserState {
   user: User | null;
 }
+
 
 export type ProductsResponseWithParams = ProductsResponse & { params: Params };
 

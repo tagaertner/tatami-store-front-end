@@ -1,17 +1,8 @@
-import {Hero, SpecialOffers,CategorySection} from '../components';
-import { type LoaderFunction } from 'react-router-dom';
-import { customFetch, type ProductsResponse } from '../utils';
-
-
-const url = '/products?featured=true';
-
-export const loader: LoaderFunction = async (): Promise<ProductsResponse> => {
-  const response = await customFetch<ProductsResponse>(url);
-  return { ...response.data };
-};
+// src/pages/Landing.tsx
+import { Hero, SpecialOffers, CategorySection } from '../components';
+import { landingLoader } from '../loaders/landingLoader';
 
 function Landing() {
-
   return (
     <main>
       <Hero />
@@ -25,6 +16,9 @@ function Landing() {
     </main>
   );
 }
+
+export { landingLoader as loader };
+export default Landing;
 
 
 // {/* Promotions section  keeing here for now, actual part of Featured products compontnt */}
@@ -56,4 +50,4 @@ function Landing() {
 //   );
 
 // }
-export default Landing;
+// export default Landing;
