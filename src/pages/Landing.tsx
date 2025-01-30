@@ -1,6 +1,7 @@
 // src/pages/Landing.tsx
 import { Hero, SpecialOffers, CategorySection } from '../components';
 import { landingLoader } from '../loaders/landingLoader';
+export { landingLoader as loader};
 
 function Landing() {
   return (
@@ -17,7 +18,7 @@ function Landing() {
   );
 }
 
-export { landingLoader as loader };
+// export { landingLoader as loader };
 export default Landing;
 
 

@@ -3,19 +3,27 @@
 //   meta: ProductsMeta;
 // };
 // change for python
+// export type ProductsResponse = {
+//   data: Product[];
+//   meta: {
+//     pagination: {
+//       total: number;
+//       pageCount: number;
+//       page: number;
+//       pageSize: number;
+//     };
+//     categories: string[];
+//   };
+// };
+
 export type ProductsResponse = {
   data: Product[];
   meta: {
-    pagination: {
-      total: number;
-      pageCount: number;
-      page: number;
-      pageSize: number;
-    };
+    pagination: Pagination;
     categories: string[];
-    companies: string[];
   };
-};
+}
+
 export type CartItem = {
   cartID: string;
   productID: number;
@@ -121,16 +129,15 @@ export type FormCheckboxProps = {
 // };
 
 export type Pagination = {
-  page: number;
-  pageCount: number;
-  pageSize: number;
   total: number;
+  pageCount: number;
+  page: number;
+  pageSize: number;
 };
 
 export type Params = {
   search?: string;
   category?: string;
-  company?: string;
   order?: string;
   price?: string;
   shipping?: string;
@@ -150,7 +157,10 @@ export interface UserState {
 }
 
 
-export type ProductsResponseWithParams = ProductsResponse & { params: Params };
+// export type ProductsResponseWithParams = ProductsResponse & { params: Params };
+export type ProductsResponseWithParams = ProductsResponse & {
+  params: Record<string, string>;
+};
 
 export type SingleProductResponse = {
   data: Product;
