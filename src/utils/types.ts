@@ -50,12 +50,12 @@ export type Checkout = {
   cartItems: CartItem[];
   numItemsInCart: number;
 };
-// export type OrdersResponse = {
-//   data:Order[];
-//   meta: {
-//     pagination: Pagination;
-//   };
-// };
+export type OrdersResponse = {
+  data:Order[];
+  meta: {
+    pagination: Pagination;
+  };
+};
 // changed for python
 export type Order = {
   id: string;

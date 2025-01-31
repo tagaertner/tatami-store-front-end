@@ -14,9 +14,8 @@ function ProductsList() {
     <div className='mt-12 grid gap-y-8'>
       {products.map((product) => {
         // Add null check for product and attributes
-        if (!product?.attributes) return null;
-        
-        const { name, price, image } = product.attributes;
+        if (!product) return null;
+        const { name, price, image_url } = product;
         const dollarsAmount = formatAsDollars(price);
 
         return (
@@ -24,7 +23,7 @@ function ProductsList() {
             <Card>
               <CardContent className='p-8 gap-y-4 grid md:grid-cols-3 '>
                 <img
-                  src={image}
+                  src={image_url}
                   alt={name}
                   className='h-64 w-full md:h-48 md:w-48 rounded-md object-cover'
                 />

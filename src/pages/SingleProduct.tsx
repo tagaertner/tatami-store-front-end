@@ -4,7 +4,7 @@ import {
   customFetch,
   formatAsDollars,
   type Product,
-  type CartItem
+  // type CartItem
 } from '../utils';
 import { useState } from 'react';
 import { Button } from "../components/ui/button";
@@ -12,8 +12,8 @@ import { Separator } from '../components/ui/separator';
 import { SelectProductAmount } from '../components';
 import { type LoaderFunction } from 'react-router-dom';
 import { Mode } from '../components/SelectProductAmount';
-import { useAppDispatch } from '../lib/hooks';
-import { addItem } from '../features/cart/cartSlice';
+// import { useAppDispatch } from '../lib/hooks';
+// import { addItem } from '../features/cart/cartSlice';
 
 export const loader: LoaderFunction = async ({ params }): Promise<Product> => {
 

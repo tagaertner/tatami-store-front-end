@@ -10,8 +10,8 @@ import {
 import {
   constructUrl,
   constructPrevOrNextUrl,
-  type OrdersResponse,
 } from '../utils';
+import type {OrdersResponse} from '../utils/types';
 
 import { useLoaderData, useLocation } from 'react-router-dom';
 
