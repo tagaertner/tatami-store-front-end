@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const productionUrl = import.meta.env.VITE_TATAMI_BE;  // Now it will find the env variable
+const productionUrl = import.meta.env.VITE_TATAMI_BE;
 
-console.log('Backend URL:', productionUrl); // Add this to verify it's working
+// console.log('Backend URL:', productionUrl);
 
 export const customFetch = axios.create({
   baseURL: productionUrl
 });
 
-console.log("customFetch >>> ", customFetch);
+// console.log("customFetch >>> ", customFetch);
