@@ -23,7 +23,13 @@ export const loader: LoaderFunction = async ({params}): Promise<SingleProductRes
 };
 
 function SingleProduct() {
-  const { data: product } = useLoaderData() as SingleProductResponse;
+  const loaderData = useLoaderData() as SingleProductResponse | undefined;
+  const product = loaderData?.data;
+  
+  if (!product) {
+    return <p>Loading...</p>; // Заглушка, пока нет данных
+  }  console.log('product >>> ', product);
+  
   const { image, title, price, description } =
     product.attributes;
   const dollarsAmount = formatAsDollars(price);

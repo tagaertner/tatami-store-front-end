@@ -18,11 +18,11 @@
 
 export type ProductsResponse = {
   data: Product[];
-  meta: {
+  meta?: {
     pagination: Pagination;
     categories: string[];
   };
-}
+};
 
 export type CartItem = {
   cartID: string;
@@ -84,17 +84,26 @@ export type Order = {
 //   };
 // };
 
-export type Product ={
-  id: string,
-  attributes: {
-  description: string,
-  image: string,
-  is_active: boolean,
-  name: string,
-  price: number,
-  stock: number,
-}
+// export type Product ={
+//   id: string,
+//   attributes: {
+//   description: string,
+//   image: string,
+//   is_active: boolean,
+//   name: string,
+//   price: number,
+//   stock: number,
+// }
 
+// };
+export type Product = {
+  id: string;
+  description: string;
+  image_url: string;
+  is_active: boolean;
+  name: string;
+  price: number;
+  stock: number;
 };
 
 export type ProductsMeta = {

@@ -4,12 +4,14 @@ import { formatAsDollars, type ProductsResponse } from '../../utils';
 
 function ProductsGrid() {
   const { data: products } = useLoaderData() as ProductsResponse;
-
+  console.log("products", products);
+    
   return (
     // <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 '>
     <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3'>
       {products.map((product) => {
-        const { title, price, image } = product.attributes;
+        
+        const { name, price, image_url } = product;
         const dollarsAmount = formatAsDollars(price);
 
         return (
@@ -17,12 +19,12 @@ function ProductsGrid() {
             <Card>
               <CardContent className='p-4'>
                 <img
-                  src={image}
-                  alt={title}
+                  src={image_url}
+                  alt={name}
                   className='rounded-md h-64 md:h-48 w-full object-cover'
                 />
                 <div className='mt-4 text-center'>
-                  <h2 className='text-xl font-semibold capitalize'>{title}</h2>
+                  <h2 className='text-xl font-semibold capitalize'>{name}</h2>
                   <p className='text-primary font-light mt-2'>
                     {dollarsAmount}
                   </p>
