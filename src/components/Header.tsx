@@ -3,23 +3,32 @@ import { Button } from './ui/button';
 import { useAppDispatch, useAppSelector } from '../lib/hooks';
 import { logoutUser } from '../features/user/userSlice';
 import { clearCart } from '../features/cart/cartSlice';
-import { useToast } from './ui/use-toast';
+// import { useToast } from './ui/use-toast';
 
 
 function Header() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { toast } = useToast();
+  // const { toast } = useToast();
 
 
   const user = useAppSelector((state) => state.userState.user);
 
   const handleLogout = () => {
+    // Clear user session in Redux
     dispatch(clearCart());
     dispatch(logoutUser());
-    toast({ description: 'Logged out' });
-    navigate('/');
+  
+    // Clear Cookies
+    document.cookie = "user_data=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  
+    // AWS Cognito Logout URL
+    const cognitoLogoutUrl = 'http://localhost:5000/auth/logout';
+  
+    // Redirect User to Cognito Logout
+    window.location.href = cognitoLogoutUrl;
   };
+
 
   return (
     <header>
@@ -27,7 +36,7 @@ function Header() {
         {/* USER */}
         {user ? (
           <div className='flex gap-x-2 sm:gap-x-8 items-center'>
-            <p className='text-xs sm:text-sm'>Hello, {user.username}</p>
+            <Link to={'/profile'} className='text-xs sm:text-sm'>Hello, {user.given_name}</Link>
             <Button variant='link' size='sm' onClick={handleLogout}>
               Logout
             </Button>
@@ -35,10 +44,7 @@ function Header() {
         ) : (
           <div className='flex gap-x-6 justify-center items-center -mr-4'>
             <Button asChild variant='link' size='sm'>
-              <Link to='/login'>Sign in / Guest</Link>
-            </Button>
-            <Button asChild variant='link' size='sm'>
-              <Link to='/register'>Register</Link>
+              <Link to={import.meta.env.VITE_TATAMI_BE + '/auth/login'}>Sign in / Sign up</Link>
             </Button>
           </div>
         )}

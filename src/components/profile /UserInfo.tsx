@@ -6,7 +6,9 @@ import { User } from 'lucide-react';
 
 interface UserProps {
   user: {
-    username: string;
+    given_name: string;
+    family_name: string;
+    phone_number: string;
     email: string;
   }
 }
@@ -18,8 +20,9 @@ const UserInfo = ({ user }:UserProps) => {
         <div className="flex items-center space-x-4">
           <User className="h-8 w-8" />
           <div>
-            <h2 className="text-2xl font-bold">{user.username}</h2>
+            <h2 className="text-2xl font-bold">{user.given_name} {user.family_name}</h2>
             <p className="text-gray-500">{user.email}</p>
+            <p className="text-gray-500">{user.phone_number}</p>
           </div>
         </div>
         <Button>Edit Profile</Button>

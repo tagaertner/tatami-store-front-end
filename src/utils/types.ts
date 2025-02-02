@@ -153,10 +153,11 @@ export type Params = {
   page?: number;
 };
 export type User = {
-  username: string;
-  jwt: string;
+  cognito_id: string;
   email: string;
-  shippingInfo?: ShippingInfo[]; 
+  family_name: string;
+  given_name: string;
+  phone_number: string;
 };
 export type UserInfoProps = {
   user: User;
