@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import { useAppDispatch, useAppSelector } from '../lib/hooks';
 import { logoutUser } from '../features/user/userSlice';
@@ -13,6 +13,10 @@ function Header() {
 
 
   const user = useAppSelector((state) => state.userState.user);
+  console.log("USER:", user);
+  console.log("COOKIE:", document.cookie);
+  
+  
 
   const handleLogout = () => {
     // Clear user session in Redux
@@ -23,7 +27,7 @@ function Header() {
     document.cookie = "user_data=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   
     // AWS Cognito Logout URL
-    const cognitoLogoutUrl = 'http://localhost:5000/auth/logout';
+    const cognitoLogoutUrl = import.meta.env.VITE_TATAMI_BE + '/auth/logout';
   
     // Redirect User to Cognito Logout
     window.location.href = cognitoLogoutUrl;

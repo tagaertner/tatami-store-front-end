@@ -12,7 +12,6 @@ function CartTotals() {
   return (
     <Card className='w-full max-w-4xl p-12 bg-muted scale-122'>
       <CartTotalRow label='Subtotal' amount={cartTotal} />
-      <CartTotalRow label='Shipping' amount={shipping} />
       <CartTotalRow label='Tax' amount={tax} />
       <CardTitle className='mt-8'>
         <CartTotalRow label='Order Total' amount={orderTotal} lastRow />

@@ -1,7 +1,7 @@
 import { formatAsDollars } from '../utils';
 import { useAppDispatch }  from '../hooks/hooks';
 import { Button } from './ui/button';
-import { editItem, removeItem } from '../features/cart/cartSlice';
+import { editItem, removeItemFromCartAsync } from '../features/cart/cartSlice';
 import SelectProductAmount from './SelectProductAmount';
 import { Mode } from './SelectProductAmount';
 
@@ -21,19 +21,24 @@ export const FirstColumn = ({
   );
 };
 
+
 export const SecondColumn = ({
   amount,
   cartID,
+  productID,
 }: {
   amount: number;
   cartID: string;
+  productID: string;
 }) => {
   const dispatch = useAppDispatch();
 
+  // Dispatch the async thunk for removal using the productID
   const removeItemFromTheCart = () => {
-    dispatch(removeItem(cartID));
+    dispatch(removeItemFromCartAsync(productID));
   };
 
+  // Dispatch editItem to update the quantity
   const setAmount = (value: number) => {
     dispatch(editItem({ cartID, amount: value }));
   };
@@ -45,7 +50,7 @@ export const SecondColumn = ({
         setAmount={setAmount}
         mode={Mode.CartItem}
       />
-      <Button variant='link' className='-ml-4' onClick={removeItemFromTheCart}>
+      <Button variant="link" className="-ml-4" onClick={removeItemFromTheCart}>
         remove
       </Button>
     </div>
@@ -53,5 +58,5 @@ export const SecondColumn = ({
 };
 
 export const ThirdColumn = ({ price }: { price: string }) => {
-  return <p className='font-medium sm:ml-auto'>{formatAsDollars(price)}</p>;
+  return <p className='font-medium sm:m-auto'>{formatAsDollars(price)}</p>;
 };

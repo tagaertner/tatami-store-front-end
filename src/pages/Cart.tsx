@@ -22,7 +22,6 @@ function Cart() {
         </div>
         <div className='lg:col-span-4 lg:pl-4'>
           <CartTotals />
-         
             <Button asChild className='mt-8 w-full'>
               {user? (
                 <Link to='/checkout'>Proceed to checkout</Link>

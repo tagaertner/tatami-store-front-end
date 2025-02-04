@@ -9,11 +9,12 @@ function Landing() {
     <main>
       <Hero />
       <div className="py-24">
+        {/* Okay, we will work on this after connecting BE */}
         <CategorySection />
       </div>
       <div className="pb-24">
-        <SpecialOffers/>
-        <FeaturedProducts />
+        {/* <SpecialOffers/> */}
+        {/* <FeaturedProducts /> */}
       </div>
     </main>
   );

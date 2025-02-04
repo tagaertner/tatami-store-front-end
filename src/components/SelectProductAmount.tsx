@@ -21,7 +21,7 @@ type SelectCartItemAmountProps = {
   mode: Mode.CartItem;
   amount: number;
   setAmount: (value: number) => void;
-}
+};
 
 function SelectProductAmount({
   mode,
@@ -29,18 +29,21 @@ function SelectProductAmount({
   setAmount,
 }: SelectProductAmountProps | SelectCartItemAmountProps) {
   const cartItem = mode === Mode.CartItem;
+  // Ensure amount is always defined (fallback to 0 if undefined)
+  const safeAmount = amount ?? 0;
+  
   return (
     <>
       <h4 className='font-medium mb-2'>Amount :</h4>
       <Select
-        defaultValue={amount.toString()}
+        defaultValue={safeAmount.toString()}
         onValueChange={(value) => setAmount(Number(value))}
       >
         <SelectTrigger className={cartItem ? 'w-[75px]' : 'w-[150px]'}>
-          <SelectValue placeholder={amount} />
+          <SelectValue placeholder={safeAmount.toString()} />
         </SelectTrigger>
         <SelectContent>
-          {Array.from({ length: cartItem ? amount + 10 : 10 }, (_, index) => {
+          {Array.from({ length: cartItem ? safeAmount + 10 : 10 }, (_, index) => {
             const selectValue = (index + 1).toString();
             return (
               <SelectItem key={index} value={selectValue}>
@@ -53,4 +56,5 @@ function SelectProductAmount({
     </>
   );
 }
+
 export default SelectProductAmount;
