@@ -24,9 +24,11 @@ export const FirstColumn = ({
 export const SecondColumn = ({
   amount,
   cartID,
+  stock,
 }: {
   amount: number;
   cartID: string;
+  stock: number;
 }) => {
   const dispatch = useAppDispatch();
 
@@ -41,9 +43,10 @@ export const SecondColumn = ({
   return (
     <div className="sm:ml-4 md:ml-12">
       <SelectProductAmount
-        amount={amount}
-        setAmount={setAmount}
         mode={Mode.CartItem}
+        amount={amount}
+        stock={stock}
+        setAmount={setAmount}
       />
       <Button variant='link' className='-ml-4' onClick={removeItemFromTheCart}>
         remove

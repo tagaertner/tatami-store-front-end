@@ -30,7 +30,7 @@ const OrderConfirmation = () => {
       <Card className="mt-8">
         <CardHeader>
           <CardTitle className="text-2xl text-[hsl(17.5_88.3%_40.4%)]">
-            Thank you for your order, {user?.username}!
+            Thank you for your order, {user?.given_name}!
           </CardTitle>
         </CardHeader>
         

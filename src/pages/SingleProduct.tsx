@@ -11,7 +11,7 @@ import { Separator } from '../components/ui/separator';
 import { SelectProductAmount } from '../components';
 import { type LoaderFunction } from 'react-router-dom';
 import { Mode } from '../components/SelectProductAmount';
-import { useAppDispatch, useAppSelector } from '../lib/hooks';
+import { useAppDispatch/* , useAppSelector */ } from '../lib/hooks';
 import { addItemToCartAsync } from '../features/cart/cartSlice';
 
 // Loader function to fetch the single product
@@ -31,9 +31,8 @@ function SingleProduct() {
   const dispatch = useAppDispatch();
 
   // Optionally, if you need to check user authentication:
-  const user = useAppSelector((state) => state.userState.user);
-  console.log('USR;', user);
-  
+  // const user = useAppSelector((state) => state.userState.user);
+
 
   // Create a cart item based on the product details and selected amount.
   // Adjust the field names to match your CartItem type.
@@ -44,8 +43,8 @@ function SingleProduct() {
     title: name,           // Adjust if your CartItem expects "title" or "name"
     price: price.toString(), // Convert price to string if necessary
     amount,                // Selected amount
+    availableStock: product.stock, // Add the stock (availableStock) from the product.
   };
-  console.log('CART PRODUCT:', cartProduct);  
 
   // Function to add the item to the cart.
   // If the user is authenticated, this dispatches the async thunk.
@@ -80,8 +79,12 @@ function SingleProduct() {
           </p>
           <p className='mt-6 leading-8'>{description}</p>
           {/* AMOUNT SELECTOR */}
-          <SelectProductAmount mode={Mode.SingleProduct} amount={amount} setAmount={setAmount} />
-          {/* ADD TO CART BUTTON */}
+          <SelectProductAmount
+            mode={Mode.SingleProduct}
+            amount={amount}
+            setAmount={(val) => setAmount(val)} // you can ignore the second parameter if needed
+            stock={product.stock}
+          />          {/* ADD TO CART BUTTON */}
           <Button size='lg' className='mt-10' onClick={addToCart}>
             Add to bag
           </Button>

@@ -1,8 +1,8 @@
 // src/pages/Landing.tsx
-import { Hero, SpecialOffers, CategorySection } from '../components';
+import { Hero, /* SpecialOffers, */ CategorySection } from '../components';
 import { landingLoader } from '../loaders/landingLoader';
 export { landingLoader as loader};
-import FeaturedProducts from '../components/landing/FeaturedProducts';
+// import FeaturedProducts from '../components/landing/FeaturedProducts';
 
 function Landing() {
   return (

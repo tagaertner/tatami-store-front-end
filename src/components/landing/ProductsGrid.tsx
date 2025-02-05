@@ -4,7 +4,6 @@ import { formatAsDollars, type ProductsResponse } from '../../utils';
 
 function ProductsGrid() {
   const { data: products } = useLoaderData() as ProductsResponse;
-  console.log("products", products);
     
   return (
     // <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 '>

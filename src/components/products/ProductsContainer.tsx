@@ -17,10 +17,7 @@ function ProductsContainer() {
   }
 
   const totalProducts = meta.pagination.total;
-  console.log("totalProducts", totalProducts);
-  console.log("meta", meta);
-  
-  
+
 
   return (
     <>

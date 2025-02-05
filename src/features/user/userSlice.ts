@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "../../components/ui/use-toast";
-import { User, UserState, ShippingInfo } from "../../utils/types";
+import { User, UserState/* , ShippingInfo  */} from "../../utils/types";
 
 // Function to get user data from cookies
 const getUserFromCookies = (): User | null => {
@@ -41,10 +41,10 @@ const userSlice = createSlice({
       // ✅ Set cookie for user session
       document.cookie = `user_data=${btoa(JSON.stringify(user))}; path=/; samesite=Lax; secure`;
 
-      if (user.username === "demo user") {
-        toast({ description: "Welcome Guest User" });
-        return;
-      }
+      // if (!user) {
+      //   toast({ description: "Please log in your account" });
+      //   return;
+      // }
       toast({ description: "Login successful" });
     },
 
@@ -56,29 +56,29 @@ const userSlice = createSlice({
       document.cookie = "user_data=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     },
 
-    saveShippingAddress: (state, action: PayloadAction<ShippingInfo>) => {
-      if (state.user) {
-        if (!state.user.shippingInfo) {
-          state.user.shippingInfo = [];
-        }
-        // Add id to the address when saving
-        const addressWithId = {
-          ...action.payload,
-          id: crypto.randomUUID(), // Generate unique ID
-        };
-        state.user.shippingInfo.push(addressWithId);
-        localStorage.setItem("user", JSON.stringify(state.user));
+    // saveShippingAddress: (state, action: PayloadAction<ShippingInfo>) => {
+    //   if (state.user) {
+    //     if (!state.user.shippingInfo) {
+    //       state.user.shippingInfo = [];
+    //     }
+    //     // Add id to the address when saving
+    //     const addressWithId = {
+    //       ...action.payload,
+    //       id: crypto.randomUUID(), // Generate unique ID
+    //     };
+    //     state.user.shippingInfo.push(addressWithId);
+    //     localStorage.setItem("user", JSON.stringify(state.user));
 
-        // ✅ Update cookies with new user data
-        document.cookie = `user_data=${btoa(JSON.stringify(state.user))}; path=/; samesite=Lax; secure`;
+    //     // ✅ Update cookies with new user data
+    //     document.cookie = `user_data=${btoa(JSON.stringify(state.user))}; path=/; samesite=Lax; secure`;
 
-        toast({ description: "Address saved successfully" });
-      }
-    },
+    //     toast({ description: "Address saved successfully" });
+    //   }
+    // },
   },
 });
 
-export const { loginUser, logoutUser, saveShippingAddress } = userSlice.actions;
+export const { loginUser, logoutUser/* , saveShippingAddress  */} = userSlice.actions;
 
 export default userSlice.reducer;
 

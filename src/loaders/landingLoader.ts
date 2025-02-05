@@ -7,10 +7,8 @@ const url = '/products';
 
 export const landingLoader: LoaderFunction = async (): Promise<ProductsResponse> => {
   try {
-    console.log('Attempting to fetch featured products from:', url);
     const response = await customFetch<ProductsResponse>(url);
-    console.log("response >>> ", response);
-    
+
     if (!response.data) {
       throw new Error('No data received from API');
     }

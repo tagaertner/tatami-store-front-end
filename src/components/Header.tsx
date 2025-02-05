@@ -13,10 +13,6 @@ function Header() {
 
 
   const user = useAppSelector((state) => state.userState.user);
-  console.log("USER:", user);
-  console.log("COOKIE:", document.cookie);
-  
-  
 
   const handleLogout = () => {
     // Clear user session in Redux

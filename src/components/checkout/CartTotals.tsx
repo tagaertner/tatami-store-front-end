@@ -5,7 +5,7 @@ import { Separator } from '../ui/separator';
 
 
 function CartTotals() {
-  const { cartTotal, shipping, tax, orderTotal } = useAppSelector(
+  const { cartTotal, tax, orderTotal } = useAppSelector(
     (state) => state.cartState
   );
 

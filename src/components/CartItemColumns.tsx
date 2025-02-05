@@ -1,9 +1,11 @@
 import { formatAsDollars } from '../utils';
 import { useAppDispatch }  from '../hooks/hooks';
 import { Button } from './ui/button';
-import { editItem, removeItemFromCartAsync } from '../features/cart/cartSlice';
+import { removeItemFromCartAsync } from '../features/cart/cartSlice';
 import SelectProductAmount from './SelectProductAmount';
+// import { QuantitySelector } from '../components/cart/QuantitySelector';
 import { Mode } from './SelectProductAmount';
+import { updateCartItemQuantityAsync } from '../features/cart/cartSlice';
 
 export const FirstColumn = ({
   image,
@@ -21,35 +23,38 @@ export const FirstColumn = ({
   );
 };
 
-
 export const SecondColumn = ({
   amount,
-  cartID,
   productID,
+  stock,
 }: {
   amount: number;
-  cartID: string;
   productID: string;
+  stock: number;
 }) => {
   const dispatch = useAppDispatch();
 
-  // Dispatch the async thunk for removal using the productID
+  // Dispatch the async thunk for removal using the productID.
   const removeItemFromTheCart = () => {
     dispatch(removeItemFromCartAsync(productID));
   };
 
-  // Dispatch editItem to update the quantity
-  const setAmount = (value: number) => {
-    dispatch(editItem({ cartID, amount: value }));
+  // Dispatch the async thunk to update quantity on the backend.
+  const setAmount = (value: number, stock: number) => {
+    // Ensure the value does not exceed stock.
+    if (value > stock) value = stock;
+    dispatch(updateCartItemQuantityAsync({ productID, newQuantity: value }));
   };
 
   return (
     <div className="sm:ml-4 md:ml-12">
       <SelectProductAmount
         amount={amount}
+        stock={stock}
         setAmount={setAmount}
         mode={Mode.CartItem}
       />
+
       <Button variant="link" className="-ml-4" onClick={removeItemFromTheCart}>
         remove
       </Button>

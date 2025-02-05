@@ -15,6 +15,11 @@
 //     categories: string[];
 //   };
 // };
+// export type SelectProductAmount = {
+//   amount: number;
+//   stock: number;
+//   setAmount: (value: number, stock: number) => void;
+// }
 
 export type ProductsResponse = {
   data: Product[];
@@ -26,11 +31,12 @@ export type ProductsResponse = {
 
 export type CartItem = {
   cartID: string;
-  productID: number;
+  productID: string;
   image: string;
   title: string;
   price: string;
   amount: number;
+  availableStock: number;
 };
 
 export type CartState = {

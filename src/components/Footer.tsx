@@ -28,7 +28,7 @@ const Footer = () => {
         </div>
         <div className="border-t border-muted-foreground/20 mt-4 pt-2 text-center">
           <p className="text-xs sm:text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Tatami{user ? ` - ${user.username}` : ''} All rights reserved.
+            © {new Date().getFullYear()} Tatami{user ? ` - ${user.given_name}` : ''} All rights reserved.
           </p>
         </div>
       </div>

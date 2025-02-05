@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import type { CartItem, CartState } from '../../utils';
 import { toast } from '../../components/ui/use-toast';
@@ -27,8 +28,8 @@ export const fetchCartItemsAsync = createAsyncThunk<
     }
     try {
       const response = await customFetch.get(`/cart/${user.cognito_id}`);
-      // Assume the backend returns an array of cart items with keys:
-      // cartID, productID, title, amount, price, image
+      // Backend is assumed to return an array of cart items with keys:
+      // cartID, productID, title, amount, price, image, availableStock
       return response.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(
@@ -41,20 +42,20 @@ export const fetchCartItemsAsync = createAsyncThunk<
 // Thunk to remove a cart item from the backend.
 // Now it accepts a productID (as a string) and returns that productID upon successful deletion.
 export const removeItemFromCartAsync = createAsyncThunk<
-  string, // Return: the productID of the removed item
-  string, // Argument: the productID of the item to remove
+  string, // returns the productID of the removed item
+  string, // productID of the item to remove
   { state: RootState }
 >(
   'cart/removeItemFromCartAsync',
-  async (productId, thunkAPI) => {
+  async (productID, thunkAPI) => {
     const user = thunkAPI.getState().userState.user;
     if (!user) {
       return thunkAPI.rejectWithValue("User is not authenticated");
     }
-    try {
-      // Call backend DELETE endpoint: /cart/<user_id>/<product_id>
-      await customFetch.delete(`/cart/${user.cognito_id}/${productId}`);
-      return productId;
+    try {      
+      // DELETE endpoint: /cart/<user_id>/<product_id>
+      await customFetch.delete(`/cart/${user.cognito_id}/${productID}`);
+      return productID;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(
         error.response?.data?.error || error.message
@@ -63,8 +64,33 @@ export const removeItemFromCartAsync = createAsyncThunk<
   }
 );
 
-// Thunk to add an item to the cart for an authenticated user.
-// The thunk receives a full CartItem (with extra FE fields) and returns a full CartItem.
+// Thunk to update the quantity of a cart item on the backend.
+// This thunk calls the PATCH endpoint and returns an object with productID and new amount.
+export const updateCartItemQuantityAsync = createAsyncThunk<
+  { productID: string; amount: number },
+  { productID: string; newQuantity: number },
+  { state: RootState }
+>(
+  'cart/updateCartItemQuantityAsync',
+  async ({ productID, newQuantity }, thunkAPI) => {
+    const user = thunkAPI.getState().userState.user;
+    if (!user) {
+      return thunkAPI.rejectWithValue("User is not authenticated");
+    }
+    try {
+      // PATCH endpoint: /cart/<user_id>/<product_id>
+      await customFetch.patch(`/cart/${user.cognito_id}/${productID}`, {
+        quantity: newQuantity,
+      });
+      return { productID, amount: newQuantity };
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.error || error.message
+      );
+    }
+  }
+);
+
 export const addItemToCartAsync = createAsyncThunk<
   CartItem,   // Return type: full CartItem with extra FE details
   CartItem,   // Argument type: full CartItem provided from FE
@@ -77,9 +103,7 @@ export const addItemToCartAsync = createAsyncThunk<
       return thunkAPI.rejectWithValue("User is not authenticated");
     }
     const userId = user.cognito_id;
-    console.log("userId", userId);
-    console.log("productID", cartItem.productID);
-    console.log("amount", cartItem.amount);
+
     try {
       // Call the backend with minimal data required: product_id and quantity.
       const response = await customFetch.post(`/cart/${userId}`, {
@@ -97,6 +121,7 @@ export const addItemToCartAsync = createAsyncThunk<
         image: cartItem.image,                // extra rendering info
         title: cartItem.title,                // extra rendering info
         price: cartItem.price,                // extra rendering info
+        availableStock: cartItem.availableStock // include availableStock so that it matches the CartItem type
       };
     } catch (error: any) {
       return thunkAPI.rejectWithValue(
@@ -119,7 +144,6 @@ const cartSlice = createSlice({
     // Reducer to set cart items in state from backend.
     setCartItems: (state, action: PayloadAction<CartItem[]>) => {
       state.cartItems = action.payload;
-      // Recalculate totals
       let total = 0;
       let numItems = 0;
       state.cartItems.forEach((item) => {
@@ -180,9 +204,7 @@ const cartSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(addItemToCartAsync.fulfilled, (state, action) => {
-      // The backend returns the cart item (or an updated version).
       const newCartItem = action.payload;
-      console.log("newCartItem (action.payload) >> ", newCartItem);
       const existing = state.cartItems.find((i) => i.cartID === newCartItem.cartID);
       if (existing) {
         existing.amount += newCartItem.amount;
@@ -194,12 +216,12 @@ const cartSlice = createSlice({
       cartSlice.caseReducers.calculateTotals(state);
       toast({ description: 'Item added to cart (server)' });
     });
-    builder.addCase(addItemToCartAsync.rejected, (state, action) => {
+    builder.addCase(addItemToCartAsync.rejected, (/* state, action */) => {
       toast({ description: 'Failed to add item to cart' });
     });
     builder.addCase(removeItemFromCartAsync.fulfilled, (state, action) => {
       const removedProductId = action.payload;
-      // Remove the item where productID matches the removed product id.
+      // Remove the item with matching productID
       const cartItem = state.cartItems.find((i) => i.productID === removedProductId);
       if (cartItem) {
         state.numItemsInCart -= cartItem.amount;
@@ -209,8 +231,23 @@ const cartSlice = createSlice({
         toast({ description: 'Item removed from cart (server)' });
       }
     });
-    builder.addCase(removeItemFromCartAsync.rejected, (state, action) => {
+    builder.addCase(removeItemFromCartAsync.rejected, (/* state, action */) => {
       toast({ description: 'Failed to remove item from cart' });
+    });
+    builder.addCase(updateCartItemQuantityAsync.fulfilled, (state, action) => {
+      const { productID, amount } = action.payload;
+      const cartItem = state.cartItems.find((i) => i.productID === productID);
+      if (cartItem) {
+        // Update totals: subtract old and add new amount
+        state.numItemsInCart += amount - cartItem.amount;
+        state.cartTotal += Number(cartItem.price) * (amount - cartItem.amount);
+        cartItem.amount = amount;
+        cartSlice.caseReducers.calculateTotals(state);
+        toast({ description: 'Cart item quantity updated (server)' });
+      }
+    });
+    builder.addCase(updateCartItemQuantityAsync.rejected, (/* state, action */) => {
+      toast({ description: 'Failed to update cart item quantity' });
     });
     builder.addCase(fetchCartItemsAsync.fulfilled, (state, action) => {
       state.cartItems = action.payload;
@@ -226,7 +263,6 @@ const cartSlice = createSlice({
       state.orderTotal = total + state.tax;
       localStorage.setItem('cart', JSON.stringify(state));
     });
-    // Optionally, handle fetchCartItemsAsync.rejected as well.
   },
 });
 

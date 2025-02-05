@@ -8,7 +8,7 @@ import {
   Cart,
   About,
   Register,
-  Login,
+  // Login,
   Checkout,
   Orders,
 } from './pages';
@@ -24,8 +24,8 @@ import UserProfilePage  from './pages/UserProfilePage'
 // actions
 
 import { action as registerUser } from './pages/Register';
-import { action as loginUser } from './pages/Login';
-import { checkoutAction } from './actions/checkoutActions';
+// import { action as loginUser } from './pages/Login';
+// import { checkoutAction } from './actions/checkoutActions';
 import { checkoutCartTotalAction } from './actions/checkoutCartTotalActions';
 
 import {store} from './store';
@@ -73,7 +73,7 @@ const router = createBrowserRouter ([
         loader: checkoutLoader(store),
         children:[{
           path: 'address',
-          action: checkoutAction(store),
+          // action: checkoutAction(store),
         },
         { 
           path: 'payment',
@@ -108,12 +108,12 @@ const router = createBrowserRouter ([
 
     ]
   },
-  {
-    path:'/login', 
-    element:<Login/>, 
-    errorElement: <Error/>,
-    action:loginUser(store),
-  },
+  // {
+  //   path:'/login', 
+  //   // element:<Login/>, 
+  //   errorElement: <Error/>,
+  //   // action:loginUser(store),
+  // },
   {
     path:'/register', 
     element:<Register/>,

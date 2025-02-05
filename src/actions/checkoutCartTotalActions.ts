@@ -7,7 +7,7 @@ import { validateForm} from '../utils/validation';
  export const checkoutCartTotalAction= (store: ReduxStore) => async ({ request }: { request: Request }) => {
   const formData = await request.formData();
   const { cartState } = store.getState();
-  const { cartTotal, shipping, tax, orderTotal } = cartState;
+  const { cartTotal, tax, orderTotal } = cartState;
 
   const checkoutData: CheckoutFormData = {
     cardNumber: formData.get('cardNumber') as string,
@@ -31,7 +31,7 @@ import { validateForm} from '../utils/validation';
     
     return { 
       success: true, 
-      orderDetails: { cartTotal, shipping, tax, orderTotal }
+      orderDetails: { cartTotal, tax, orderTotal }
     };
   } catch (error) {
     console.log(error)

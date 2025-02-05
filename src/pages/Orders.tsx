@@ -23,9 +23,9 @@ export const loader = (store:ReduxStore):LoaderFunction => async({request}):Prom
   try {
     const response = await customFetch.get<OrdersResponse>('/orders', {
       params,
-      headers: {
-        Authorization: `Bearer ${user.jwt}`,
-      },
+      // headers: {
+      //   Authorization: `Bearer ${user.jwt}`,
+      // },
     });
 
     return { ...response.data };

@@ -13,13 +13,13 @@ import {
   SelectValue,
 } from '../../components/ui/select';
 import { states } from '../../data/states';
-import { useAppSelector } from '../../lib/hooks';
+// import { useAppSelector } from '../../lib/hooks';
 
 
 function CheckoutForm() {
   // Get the user's default or first saved address
-  const savedAddresses = useAppSelector((state) => state.userState.user?.shippingInfo || []);
-  const defaultAddress = savedAddresses.find(addr => addr.isDefault) || savedAddresses[0];
+  // const savedAddresses = useAppSelector((state) => state.userState.user?.shippingInfo || []);
+  // const defaultAddress = savedAddresses.find(addr => addr.isDefault) || savedAddresses[0];
 
   return (
     <Card>
@@ -34,7 +34,7 @@ function CheckoutForm() {
               id='name' 
               name='name' 
               placeholder='John Doe' 
-              defaultValue={defaultAddress?.name || ''}
+              // defaultValue={defaultAddress?.name || ''}
               required 
             />
           </div>
@@ -45,7 +45,7 @@ function CheckoutForm() {
               id='address1' 
               name='address' 
               placeholder='Street Address'
-              defaultValue={defaultAddress?.address || ''}
+              // defaultValue={defaultAddress?.address || ''}
               required 
             />
           </div>
@@ -56,7 +56,7 @@ function CheckoutForm() {
               id='address2' 
               name='address2' 
               placeholder='Apt, Suite, Unit'
-              defaultValue={defaultAddress?.address2 || ''}
+              // defaultValue={defaultAddress?.address2 || ''}
             />
           </div>
 
@@ -66,14 +66,14 @@ function CheckoutForm() {
               <Input 
                 id='city' 
                 name='city' 
-                defaultValue={defaultAddress?.city || ''}
+                // defaultValue={defaultAddress?.city || ''}
                 required 
               />
             </div>
 
             <div className='space-y-2'>
               <Label htmlFor='state'>State</Label>
-              <Select name='state' defaultValue={defaultAddress?.state || ''}>
+              <Select name='state' /* defaultValue={defaultAddress?.state || ''} */>
                 <SelectTrigger>
                   <SelectValue placeholder="Select state" />
                 </SelectTrigger>
@@ -94,7 +94,7 @@ function CheckoutForm() {
               id='zipCode' 
               name='zipCode' 
               maxLength={5}
-              defaultValue={defaultAddress?.zipCode || ''}
+              // defaultValue={defaultAddress?.zipCode || ''}
               required 
             />
           </div>
