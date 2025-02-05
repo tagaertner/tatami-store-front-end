@@ -1,6 +1,19 @@
 .
+├── Procfile
 ├── README.md
 ├── components.json
+├── dist
+│   ├── assets
+│   │   ├── StrawField-C0HV0vtg.jpg
+│   │   ├── four-CJ7woHVi.gif
+│   │   ├── hero1-xEQr_fH1.webp
+│   │   ├── hero2-DcPCdz86.webp
+│   │   ├── hero3-DtpTmro0.webp
+│   │   ├── hero4-CRjS3f4i.webp
+│   │   ├── index-BTfaC94m.css
+│   │   └── index-CAzgsfxE.js
+│   ├── index.html
+│   └── vite.svg
 ├── eslint.config.js
 ├── index.html
 ├── package-lock.json
@@ -8,6 +21,7 @@
 ├── postcss.config.js
 ├── public
 │   └── vite.svg
+├── server.js
 ├── src
 │   ├── App.tsx
 │   ├── Orders.tsx
@@ -29,7 +43,6 @@
 │   │   ├── CartButton.tsx
 │   │   ├── CartItemColumns.tsx
 │   │   ├── CartItemsList.tsx
-│   │   ├── CheckoutForm.tsx
 │   │   ├── ComplexPaginationContainer.tsx
 │   │   ├── ContactForm.tsx
 │   │   ├── ErrorElement.tsx
@@ -59,7 +72,7 @@
 │   │   │   └── AboutValues.tsx
 │   │   ├── cart
 │   │   │   ├── CartItemColumns.tsx
-│   │   │   └── CartItemsList.tsx
+│   │   │   └── QuantitySelector.tsx
 │   │   ├── checkout
 │   │   │   ├── CartTotals.tsx
 │   │   │   ├── CheckoutForm.tsx
@@ -160,4 +173,4 @@
 ├── tsconfig.node.json
 └── vite.config.ts
 
-26 directories, 135 files
+28 directories, 146 files
