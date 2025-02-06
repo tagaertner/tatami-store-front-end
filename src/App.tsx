@@ -13,6 +13,7 @@ import {
   Orders,
 } from './pages';
 import Privacy from './components/Privacy';
+import Terms from './components/Terms';
 import { ErrorElement } from './components';
 import {loader as landingLoader} from './pages/Landing';
 import {loader as productsLoader} from './pages/Products'
@@ -46,6 +47,11 @@ const router = createBrowserRouter ([
      },
      {        path:'privacy',
       element: <Privacy/>,
+      errorElement: <ErrorElement/>,
+    },
+    {
+      path:'terms',
+      element: <Terms/>,
       errorElement: <ErrorElement/>,
     },
      
