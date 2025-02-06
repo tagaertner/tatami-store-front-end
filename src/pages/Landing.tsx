@@ -1,6 +1,7 @@
 // src/pages/Landing.tsx
 import { Hero, SpecialOffers, CategorySection } from '../components';
 import { landingLoader } from '../loaders/landingLoader';
+
 export { landingLoader as loader};
 
 function Landing() {
@@ -14,6 +15,9 @@ function Landing() {
         <SpecialOffers/>
         {/* <FeaturedProducts /> */}
       </div>
+      <div className="text-center pb-8">
+
+</div>
     </main>
   );
 }

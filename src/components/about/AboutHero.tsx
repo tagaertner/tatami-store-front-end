@@ -1,20 +1,3 @@
-// import { Card, CardHeader, CardTitle, CardDescription } from "../ui/card";
-
-// const AboutHero = () => (
-//   <Card className="text-center">
-//     <CardHeader>
-//       <CardTitle className="text-4xl font-bold">Traditional Tatami</CardTitle>
-//       <CardDescription>              
-//         We believe in respecting tradition while embracing innovation. 
-//         Each tatami mat we create is a perfect blend of timeless craftsmanship 
-//         and contemporary design sensibilities.
-//       </CardDescription>
-//     </CardHeader>
-//   </Card>
-// );
-
-// export default AboutHero;
-// src/components/AboutHero.tsx
 const AboutHero = () => (
   <div>
     <h1 className='flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center text-4xl font-bold leading-none tracking-tight sm:text-6xl'>
