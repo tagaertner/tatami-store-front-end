@@ -12,6 +12,7 @@ import {
   Checkout,
   Orders,
 } from './pages';
+import Privacy from './components/Privacy';
 import { ErrorElement } from './components';
 import {loader as landingLoader} from './pages/Landing';
 import {loader as productsLoader} from './pages/Products'
@@ -51,6 +52,10 @@ const router = createBrowserRouter ([
         errorElement: <ErrorElement/>,
         loader: landingLoader,
      },
+     {        path:'privacy',
+      element: <Privacy/>,
+      errorElement: <ErrorElement/>,
+    },
      
       {
         path:'products',
@@ -87,7 +92,8 @@ const router = createBrowserRouter ([
           path: 'payment',
           action: checkoutCartTotalAction(store)
 
-          }
+          },
+                
         ]
       },
 
