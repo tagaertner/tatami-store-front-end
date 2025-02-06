@@ -5,11 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "start": "node server.js",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "heroku-postbuild": "npm install && npm run build"
+    "build": "vite build",
+    "heroku-postbuild": "npm install --include=dev && npm run build",
+    "start": "node server.js"
   },
   "engines": {
     "node": "23.x"
