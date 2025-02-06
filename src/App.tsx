@@ -21,6 +21,7 @@ import {loader as ordersLoader} from './pages/Orders';
 import OrderConfirmation, {loader as orderConfirmationLoader } from './pages/OrderConfirmation';
 import ContactUs, {loader as contactLoader} from './pages/ContactUs';
 import UserProfilePage  from './pages/UserProfilePage'
+import AuthHandler from './components/AuthHandler';
 // actions
 
 import { action as registerUser } from './pages/Register';
@@ -28,13 +29,20 @@ import { action as registerUser } from './pages/Register';
 // import { checkoutAction } from './actions/checkoutActions';
 import { checkoutCartTotalAction } from './actions/checkoutCartTotalActions';
 
+
 import {store} from './store';
+
 
 
 const router = createBrowserRouter ([
   {// homelayout is the parent
     path:'/',
-    element:<HomeLayout/>,
+    element: (
+      <>
+        <AuthHandler />
+        <HomeLayout />
+      </>
+    ),
     errorElement: <Error/>,
     children:[
       {

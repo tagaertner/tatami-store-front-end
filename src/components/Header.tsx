@@ -11,7 +11,6 @@ function Header() {
   const dispatch = useAppDispatch();
   // const { toast } = useToast();
 
-
   const user = useAppSelector((state) => state.userState.user);
 
   const handleLogout = () => {
@@ -21,6 +20,7 @@ function Header() {
   
     // Clear Cookies
     document.cookie = "user_data=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    
   
     // AWS Cognito Logout URL
     const cognitoLogoutUrl = import.meta.env.VITE_TATAMI_BE + '/auth/logout';
@@ -28,6 +28,9 @@ function Header() {
     // Redirect User to Cognito Logout
     window.location.href = cognitoLogoutUrl;
   };
+
+  console.log('Header user:', user);
+  
 
 
   return (
