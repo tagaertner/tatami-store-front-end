@@ -9,12 +9,13 @@ function Landing() {
   return (
     <main>
       <Hero />
-      <div className="py-24">
+      {/* <div className="py-24"> */}
         {/* Okay, we will work on this after connecting BE */}
-        <CategorySection />
-      </div>
+        {/* <CategorySection /> */}
+      {/* </div> */}
       <div className="pb-24">
         {/* <SpecialOffers/> */}
+        <CategorySection/>
         {/* <FeaturedProducts /> */}
       </div>
       <div className="text-center pb-8">
