@@ -27,10 +27,7 @@ function Header() {
   
     // Redirect User to Cognito Logout
     window.location.href = cognitoLogoutUrl;
-  };
-
-  console.log('Header user:', user);
-  
+  };  
 
 
   return (

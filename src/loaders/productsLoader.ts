@@ -1,37 +1,38 @@
 import { LoaderFunction } from 'react-router-dom';
-// import axios from 'axios';
 import { customFetch, type ProductsResponse, type Product } from '../utils';
 
-const url = '/products';
+const productsUrl = '/products/';
+const categoriesUrl = '/categories/';
 
-export const productsLoader: LoaderFunction = async ({
-  request
-}): Promise<ProductsResponse> => {
-  const params = Object.fromEntries([
-    ...new URL(request.url).searchParams.entries()
-  ]);
+export const productsLoader: LoaderFunction = async ({ request }): Promise<ProductsResponse> => {
+  const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
 
   try {
-    console.log('Making request to products API with params:', params);
-    const response = await customFetch<Product[]>(url, { params });
-    console.log('API Response:', response.data);
-    
+    // Fetch products and categories concurrently.
+    const [productsResponse, categoriesResponse] = await Promise.all([
+      customFetch<Product[]>(productsUrl, { params }),
+      customFetch(categoriesUrl)
+    ]);
+
+    // Map categoriesResponse.data to an array of category names.
+    const categories = Array.isArray(categoriesResponse.data)
+      ? categoriesResponse.data.map((cat: any) => cat.name)
+      : [];
+
     return { 
-      data: response.data, 
+      data: productsResponse.data, 
       meta: { 
         pagination: { 
-          total: response.data.length,  // Assuming total items are the length of the array
-          pageCount: 1, // Default to 1 since pagination isn't implemented in API
+          total: productsResponse.data.length,  
+          pageCount: 1,
           page: 1, 
-          pageSize: response.data.length || 10 // Fallback to 10 if empty
+          pageSize: productsResponse.data.length || 10
         }, 
-        categories: [] 
+        categories // now filled with category names
       }
     };
   } catch (error) {
     console.error('API Error:', error);
-
-    // Return an empty response with default meta structure to avoid breaking UI
     return {
       data: [],
       meta: {

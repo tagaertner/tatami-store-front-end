@@ -1,6 +1,6 @@
-import { Button } from "../ui/button";
+// import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
-import StrawField from '../../assets/images/StrawField.jpg';
+import StrawField from '../../../public/assets/images/StrawField.jpg';
 
 const AboutStory = () => (
   <div className="grid gap-6 mt-12 md:grid-cols-2">
@@ -12,7 +12,7 @@ const AboutStory = () => (
         We're not your typical tatami company. We blend centuries-old craftsmanship 
         with contemporary flair to create mats that make statements.
       </p>
-      <Button variant="outline">Read More</Button>
+      {/* <Button variant="outline">Read More</Button> */}
     </div>
     <Card>
       <CardContent className="p-6">

@@ -3,7 +3,11 @@ import { Card, CardContent } from '../ui/card';
 import { formatAsDollars, type ProductsResponse } from '../../utils';
 
 function ProductsGrid() {
-  const { data: products } = useLoaderData() as ProductsResponse;
+  const { data: products, categories } = useLoaderData() as ProductsResponse;
+  console.log("products in ProductsGrid", products);
+  console.log("categories in ProductsGrid", categories);
+  
+  
     
   return (
     // <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 '>

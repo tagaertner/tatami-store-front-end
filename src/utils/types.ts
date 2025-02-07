@@ -23,9 +23,9 @@
 
 export type ProductsResponse = {
   data: Product[];
+  categories: string[];
   meta?: {
     pagination: Pagination;
-    categories: string[];
   };
 };
 
@@ -110,6 +110,7 @@ export type Product = {
   name: string;
   price: number;
   stock: number;
+  categories: string[];
 };
 
 export type ProductsMeta = {

@@ -16,6 +16,7 @@ import {
 import Privacy from './components/Privacy';
 import Terms from './components/Terms';
 import { ErrorElement } from './components';
+<<<<<<< HEAD
 import {loader as landingLoader} from './pages/Landing';
 import {loader as productsLoader} from './pages/Products'
 import {loader as singleProductLoader} from './pages/SingleProduct'
@@ -24,7 +25,18 @@ import {loader as ordersLoader} from './pages/Orders';
 import OrderConfirmation, {loader as orderConfirmationLoader } from './pages/OrderConfirmation';
 // import ContactUs, {loader as contactLoader} from './pages/ContactUs';
 import UserProfilePage  from './pages/UserProfilePage'
+=======
+import { loader as landingLoader } from './pages/Landing';
+import { loader as productsLoader } from './pages/Products'
+import { loader as singleProductLoader } from './pages/SingleProduct'
+import { loader as checkoutLoader } from './pages/Checkout';
+import { loader as ordersLoader } from './pages/Orders';
+import OrderConfirmation, { loader as orderConfirmationLoader } from './pages/OrderConfirmation';
+import ContactUs, { loader as contactLoader } from './pages/ContactUs';
+import UserProfilePage from './pages/UserProfilePage'
+>>>>>>> fbb74f5dc2557b690f4cfafa835dd7f61f041558
 import AuthHandler from './components/AuthHandler';
+import CartInitializer from './components/CartInitializer';
 // actions
 
 import { action as registerUser } from './pages/Register';
@@ -33,82 +45,81 @@ import { action as registerUser } from './pages/Register';
 import { checkoutCartTotalAction } from './actions/checkoutCartTotalActions';
 
 
-import {store} from './store';
+import { store } from './store';
 
 
 
-const router = createBrowserRouter ([
+const router = createBrowserRouter([
   {// homelayout is the parent
-    path:'/',
+    path: '/',
     element: (
       <>
         <AuthHandler />
+        <CartInitializer />
         <HomeLayout />
       </>
     ),
-    errorElement: <Error/>,
-    children:[
-      
+    errorElement: <Error />,
+    children: [
       {
-        index:true,
-        element:<Landing/>,
-        errorElement: <ErrorElement/>,
+        index: true,
+        element: <Landing />,
+        errorElement: <ErrorElement />,
         loader: landingLoader,
-     },
-     {        
-      path:'privacy',
-      element: <Privacy/>,
-      errorElement: <ErrorElement/>,
-    },
-    {
-      path:'terms',
-      element: <Terms/>,
-      errorElement: <ErrorElement/>,
-    },
-    {
-      path: 'contact',
-      element: <ContactUs />,
-      loader: contactLoader(store),
-      errorElement: <ErrorElement/>  
-    },
-     
+      },
       {
-        path:'products',
-        element:<Products/>,
-        errorElement: <ErrorElement/>,
+        path: 'privacy',
+        element: <Privacy />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'terms',
+        element: <Terms />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'contact',
+        element: <ContactUs />,
+        loader: contactLoader(store),
+        errorElement: <ErrorElement/>  
+      },
+      {
+        path: 'products',
+        element: <Products />,
+        errorElement: <ErrorElement />,
         loader: productsLoader,
       },
       {
-        path:'products/:id',
-        element: <SingleProduct/>,
-        errorElement: <ErrorElement/>,
+        path: 'products/:id',
+        element: <SingleProduct />,
+        errorElement: <ErrorElement />,
         loader: singleProductLoader,
       },
       {
-        path:'cart',
-        element: <Cart/>,
-        errorElement: <ErrorElement/>,
+        path: 'cart',
+        element: <Cart />,
+        errorElement: <ErrorElement />,
       },
       {
-        path:'about',
-        element: <About/>,
-        errorElement: <ErrorElement/>,
+        path: 'about',
+        element: <About />,
+        errorElement: <ErrorElement />,
       },
       {
-        path:'checkout',
-        element: <Checkout/>,
-        errorElement: <ErrorElement/>,
+        path: 'checkout',
+        element: <Checkout />,
+        errorElement: <ErrorElement />,
         loader: checkoutLoader(store),
-        children:[{
+        children: [{
           path: 'address',
           // action: checkoutAction(store),
         },
-        { 
+        {
           path: 'payment',
           action: checkoutCartTotalAction(store)
 
-          },
-                
+        },
+
         ]
       },
 
@@ -118,21 +129,21 @@ const router = createBrowserRouter ([
         // loader: contactLoader(store)  
       },
       {
-        path:'order-confirmation',
-        element:<OrderConfirmation/>,
-        errorElement: <ErrorElement/>,
+        path: 'order-confirmation',
+        element: <OrderConfirmation />,
+        errorElement: <ErrorElement />,
         loader: orderConfirmationLoader(store),
       },
       {
-        path:'orders',
-        element: <Orders/>,
-        errorElement: <ErrorElement/>,
+        path: 'orders',
+        element: <Orders />,
+        errorElement: <ErrorElement />,
         loader: ordersLoader(store),
       },
       {
         path: 'profile',
         element: <UserProfilePage />,
-        errorElement: <ErrorElement/>
+        errorElement: <ErrorElement />
       },
 
     ]
@@ -144,16 +155,16 @@ const router = createBrowserRouter ([
   //   // action:loginUser(store),
   // },
   {
-    path:'/register', 
-    element:<Register/>,
-     errorElement: <Error/>,
-      action: registerUser,
+    path: '/register',
+    element: <Register />,
+    errorElement: <Error />,
+    action: registerUser,
   },
 
- 
+
 ])
 function App() {
-  return <RouterProvider router={router}/>
-  }
+  return <RouterProvider router={router} />
+}
 
 export default App;
