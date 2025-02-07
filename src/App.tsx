@@ -11,6 +11,7 @@ import {
   // Login,
   Checkout,
   Orders,
+  ContactUs
 } from './pages';
 import Privacy from './components/Privacy';
 import Terms from './components/Terms';
@@ -21,7 +22,7 @@ import {loader as singleProductLoader} from './pages/SingleProduct'
 import {loader as checkoutLoader } from './pages/Checkout';
 import {loader as ordersLoader} from './pages/Orders';
 import OrderConfirmation, {loader as orderConfirmationLoader } from './pages/OrderConfirmation';
-import ContactUs, {loader as contactLoader} from './pages/ContactUs';
+// import ContactUs, {loader as contactLoader} from './pages/ContactUs';
 import UserProfilePage  from './pages/UserProfilePage'
 import AuthHandler from './components/AuthHandler';
 // actions
@@ -111,11 +112,11 @@ const router = createBrowserRouter ([
         ]
       },
 
-      // {
-      //   path: '/contact',
-      //   element: <ContactUs />,
-      //   loader: contactLoader(store)  
-      // },
+      {
+        path: 'contact',
+        element: <ContactUs />,
+        // loader: contactLoader(store)  
+      },
       {
         path:'order-confirmation',
         element:<OrderConfirmation/>,
