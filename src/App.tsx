@@ -65,7 +65,12 @@ const router = createBrowserRouter([
         element: <Terms />,
         errorElement: <ErrorElement />,
       },
-
+      {
+        path: 'contact',
+        element: <ContactUs />,
+        loader: contactLoader(store),
+        errorElement: <ErrorElement/>  
+      },
       {
         path: 'products',
         element: <Products />,
@@ -106,11 +111,11 @@ const router = createBrowserRouter([
         ]
       },
 
-      {
-        path: '/contact',
-        element: <ContactUs />,
-        loader: contactLoader(store)
-      },
+      // {
+      //   path: '/contact',
+      //   element: <ContactUs />,
+      //   loader: contactLoader(store)  
+      // },
       {
         path: 'order-confirmation',
         element: <OrderConfirmation />,
