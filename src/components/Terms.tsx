@@ -8,7 +8,7 @@ const Terms = () => {
     <div className="max-w-[1440px] mx-auto px-8">
       <Card className="my-12">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-3xl font-bold text-[hsl(17.5,88.3%,40.4%)]">Terms of Service</CardTitle>
+          <CardTitle className="text-3xl font-bold text-primary">Terms of Service</CardTitle>
           <p className="text-sm text-gray-500">Last updated: February 6, 2025</p>
         </CardHeader>
         <CardContent className="space-y-8">
@@ -56,7 +56,7 @@ const Terms = () => {
             <Link to="/">
               <Button 
                 variant="outline" 
-                className="text-[hsl(17.5,88.3%,40.4%)] hover:bg-[hsl(17.5,88.3%,40.4%)] hover:text-white"
+                className="text-primary hover:bg-primary hover:text-white"
               >
                 Back to Home
               </Button>

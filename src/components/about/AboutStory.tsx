@@ -12,7 +12,7 @@ const AboutStory = () => (
         We're not your typical tatami company. We blend centuries-old craftsmanship 
         with contemporary flair to create mats that make statements.
       </p>
-      <Button variant="outline">Read More</Button>
+      {/* <Button variant="outline">Read More</Button> */}
     </div>
     <Card>
       <CardContent className="p-6">
