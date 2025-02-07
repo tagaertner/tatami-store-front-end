@@ -14,7 +14,7 @@ const UserProfilePage = () => {
     <div className="container mx-auto p-6 space-y-6">
       <UserInfo user={user} />
       <OrderHistory />
-      <Setting />
+      {/* <Setting /> */}
     </div>
   );
 };

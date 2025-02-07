@@ -17,7 +17,7 @@ const UserInfo = ({ user }:UserProps) => {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 pe-5">
           <User className="h-8 w-8" />
           <div>
             <h2 className="text-2xl font-bold">{user.given_name} {user.family_name}</h2>
