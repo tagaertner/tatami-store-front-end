@@ -16,7 +16,7 @@ const Hero = () => {
       Turn your space into something extraordinary with our wild take on traditional Japanese tatami. These aren't your zen master's floor mats - we're bringing attitude to tradition!
     </p>
 
-    <Button asChild size='lg' className='mt-10'>
+    <Button asChild size='lg' className='mt-10 text-custom'>
       <Link to='/products'>Shop Now</Link>
     </Button>
   </div>
