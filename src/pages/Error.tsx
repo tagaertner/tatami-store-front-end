@@ -1,6 +1,6 @@
 import { useRouteError, Link, isRouteErrorResponse } from 'react-router-dom';
 import { Button } from '../components/ui/button';
-import four from '../assets/images/four.gif';
+import four from '../../public/assets/images/four.gif';
 
 const Error = () => {
   // type:unknown

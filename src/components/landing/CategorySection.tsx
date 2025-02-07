@@ -1,6 +1,6 @@
-import product_vegi1 from '../../assets/images/product_vegi1.jpeg';
-import product_Arc12 from '../../assets/images/product_Arc12.jpeg';
-import product_animals8 from '../../assets/images/product_animal8.jpeg';
+import product_vegi1 from '../../../public/assets/images/product_vegi1.jpeg';
+import product_Arc12 from '../../../public/assets/images/product_Arc12.jpeg';
+import product_animals8 from '../../../public/assets/images/product_animal8.jpeg';
 
 function CategorySection() {
   return (
