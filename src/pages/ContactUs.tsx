@@ -50,7 +50,7 @@ const ContactUs = () => {
       <Card className="mt-8">
         <CardHeader>
           <CardTitle className="text-2xl text-primary">
-            How can we help you, {user?.given_name}?
+            How can we help you, {user ? user?.given_name : 'dear guest' }?
           </CardTitle>
           <p className="text-muted-foreground mt-2">
             Have a question or feedback? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.

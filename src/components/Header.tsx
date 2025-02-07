@@ -27,10 +27,7 @@ function Header() {
   
     // Redirect User to Cognito Logout
     window.location.href = cognitoLogoutUrl;
-  };  
-
-  console.log('import.meta.env.VITE_TATAMI_BE', import.meta.env.VITE_TATAMI_BE);
-  
+  };
 
 
   return (

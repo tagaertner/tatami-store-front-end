@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import logo from '../../public/assets/logo_full.png';
 
 function Logo() {
   return (
@@ -6,8 +7,7 @@ function Logo() {
       to='/'
       className='hidden lg:flex justify-center items-center p-2 rounded-lg text-white '
     >
-      <img src="../../public/assets/logo_full.png" alt="tatami logo" className='h-10' />
-      {/* <Blinds className='w-8 h-8' /> */}
+      <img src={logo} alt="tatami logo" className='h-10' />
     </Link>
   );
 }
