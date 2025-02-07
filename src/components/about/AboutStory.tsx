@@ -1,6 +1,6 @@
-import { Button } from "../ui/button";
+// import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
-import StrawField from '../../assets/images/StrawField.jpg';
+import StrawField from '../../../public/assets/images/StrawField.jpg';
 
 const AboutStory = () => (
   <div className="grid gap-6 mt-12 md:grid-cols-2">
