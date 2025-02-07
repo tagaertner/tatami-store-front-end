@@ -10,5 +10,6 @@ export { default as Register } from './Register';
 export { default as Checkout } from './Checkout';
 export { default as Orders } from './Orders';
 export { default as OrderConfirmation } from './OrderConfirmation';
+export { default as ContactUs } from './ContactUs';
 
 
