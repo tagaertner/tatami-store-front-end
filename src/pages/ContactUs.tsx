@@ -8,11 +8,11 @@ import ContactForm, { ContactFormData } from '../components/ContactForm';
 import { useState } from 'react';
 
 // export const loader = (store: ReduxStore): LoaderFunction => async (): Promise<Response | null> => {
-//   const user = store.getState().userState.user;
-//   if (!user) {
-//     toast({ description: 'Please login to contact us' });
-//     return redirect('/login');
-//   }
+  // const user = store.getState().userState.user;
+  // if (!user) {
+  //   toast({ description: 'Please login to contact us' });
+  //   return redirect('/login');
+  // }
 //   return null;
 // };
 

@@ -29,6 +29,9 @@ function Header() {
     window.location.href = cognitoLogoutUrl;
   };  
 
+  console.log('import.meta.env.VITE_TATAMI_BE', import.meta.env.VITE_TATAMI_BE);
+  
+
 
   return (
     <header>
