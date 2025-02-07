@@ -1,10 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../hooks/hooks';
-
 
 const Footer = () => {
-  const user = useAppSelector((state) => state.userState.user);
-
   const footerLinks = [
     { label: 'About', href: '/about' },
     { label: 'Contact Us', href: '/contact' },
@@ -28,7 +24,7 @@ const Footer = () => {
         </div>
         <div className="border-t border-muted-foreground/20 mt-4 pt-2 text-center">
           <p className="text-xs sm:text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Tatami{user ? ` - ${user.given_name}` : ''} All rights reserved.
+            © {new Date().getFullYear()} Tatami: All rights reserved.
           </p>
         </div>
       </div>
