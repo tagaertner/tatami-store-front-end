@@ -7,10 +7,10 @@ import {
 } from '../ui/carousel';
 import { Card, CardContent } from '../ui/card';
 
-import hero1 from '../../../public/assets/hero1.webp';
-import hero2 from '../../../public/assets/hero2.webp';
-import hero3 from '../../../public/assets/hero3.webp';
-import hero4 from '../../../public/assets/hero4.webp';
+import hero1 from '/assets/hero1.webp';
+import hero2 from '/assets/hero2.webp';
+import hero3 from '/assets/hero3.webp';
+import hero4 from '/assets/hero4.webp';
 
 const carouselImages = [hero1, hero2, hero3, hero4];
 

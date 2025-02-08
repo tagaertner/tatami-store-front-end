@@ -32,7 +32,7 @@
 //         '/auth/local',
 //         data
 //       );
-//       const username = response.data.user.given_name;
+//       const username = response.data.user.first_name;
 //       const email = response.data.user.email;
 //       const jwt = response.data.jwt;
 //       store.dispatch(loginUser({ username, email, jwt }));
