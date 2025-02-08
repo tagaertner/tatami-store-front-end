@@ -8,11 +8,11 @@ import ContactForm, { ContactFormData } from '../components/ContactForm';
 import { useState } from 'react';
 
 // export const loader = (store: ReduxStore): LoaderFunction => async (): Promise<Response | null> => {
-//   const user = store.getState().userState.user;
-//   if (!user) {
-//     toast({ description: 'Please login to contact us' });
-//     return redirect('/login');
-//   }
+  // const user = store.getState().userState.user;
+  // if (!user) {
+  //   toast({ description: 'Please login to contact us' });
+  //   return redirect('/login');
+  // }
 //   return null;
 // };
 
@@ -50,7 +50,7 @@ const ContactUs = () => {
       <Card className="mt-8">
         <CardHeader>
           <CardTitle className="text-2xl text-primary">
-            How can we help you, {user?.given_name}?
+            How can we help you, {user ? user?.first_name : 'dear guest' }?
           </CardTitle>
           <p className="text-muted-foreground mt-2">
             Have a question or feedback? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.

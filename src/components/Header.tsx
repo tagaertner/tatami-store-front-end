@@ -27,7 +27,7 @@ function Header() {
   
     // Redirect User to Cognito Logout
     window.location.href = cognitoLogoutUrl;
-  };  
+  };
 
 
   return (
@@ -36,7 +36,7 @@ function Header() {
         {/* USER */}
         {user ? (
           <div className='flex gap-x-2 sm:gap-x-8 items-center'>
-            <Link to={'/profile'} className='text-xs sm:text-sm'>Hello, {user.given_name}</Link>
+            <Link to={'/profile'} className='text-xs sm:text-sm'>Hello, {user.first_name}</Link>
             <Button variant='link' size='sm' onClick={handleLogout}>
               Logout
             </Button>

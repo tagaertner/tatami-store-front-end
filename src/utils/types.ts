@@ -162,9 +162,9 @@ export type Params = {
 export type User = {
   cognito_id: string;
   email: string;
-  family_name: string;
-  given_name: string;
-  phone_number: string;
+  last_name: string;
+  first_name: string;
+  phone: string;
 };
 export type UserInfoProps = {
   user: User;

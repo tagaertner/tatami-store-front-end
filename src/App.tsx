@@ -11,30 +11,20 @@ import {
   // Login,
   Checkout,
   Orders,
-  ContactUs
+  // ContactUs
 } from './pages';
 import Privacy from './components/Privacy';
 import Terms from './components/Terms';
 import { ErrorElement } from './components';
-<<<<<<< HEAD
-import {loader as landingLoader} from './pages/Landing';
-import {loader as productsLoader} from './pages/Products'
-import {loader as singleProductLoader} from './pages/SingleProduct'
-import {loader as checkoutLoader } from './pages/Checkout';
-import {loader as ordersLoader} from './pages/Orders';
-import OrderConfirmation, {loader as orderConfirmationLoader } from './pages/OrderConfirmation';
-// import ContactUs, {loader as contactLoader} from './pages/ContactUs';
-import UserProfilePage  from './pages/UserProfilePage'
-=======
+
 import { loader as landingLoader } from './pages/Landing';
 import { loader as productsLoader } from './pages/Products'
 import { loader as singleProductLoader } from './pages/SingleProduct'
 import { loader as checkoutLoader } from './pages/Checkout';
 import { loader as ordersLoader } from './pages/Orders';
 import OrderConfirmation, { loader as orderConfirmationLoader } from './pages/OrderConfirmation';
-import ContactUs, { loader as contactLoader } from './pages/ContactUs';
+import ContactUs/* , { loader as contactLoader } */ from './pages/ContactUs';
 import UserProfilePage from './pages/UserProfilePage'
->>>>>>> fbb74f5dc2557b690f4cfafa835dd7f61f041558
 import AuthHandler from './components/AuthHandler';
 import CartInitializer from './components/CartInitializer';
 // actions
@@ -80,7 +70,7 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         element: <ContactUs />,
-        loader: contactLoader(store),
+        // loader: contactLoader(store),
         errorElement: <ErrorElement/>  
       },
       {
