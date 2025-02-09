@@ -1,11 +1,14 @@
 import { useAppSelector } from '../lib/hooks';
-// import { useState } from 'react'; // Add this import
-import { CheckoutForm, SectionTitle, CartTotals, CreditCardForm } from '../components';
-// import { SavedShippingInfo, } from '../components/checkout/SavedShippingInfo';
+import { SectionTitle, CartTotals, CreditCardForm } from '../components';
+import NewAddressForm from '../components/checkout/NewAddressForm';
 import { LoaderFunction, redirect } from 'react-router-dom';
 import { toast } from '../components/ui/use-toast';
-// import { ShippingInfo } from '../utils/types';
 import { type ReduxStore } from '../store';
+import AddressSelection from '../components/AddressSelection';
+import { Address } from '../components/AddressCard';
+import { CardTitle } from '../components/ui/card';
+
+
 
 export const loader = (store: ReduxStore): LoaderFunction =>
   async (): Promise<Response | null> => {
@@ -19,22 +22,43 @@ export const loader = (store: ReduxStore): LoaderFunction =>
 
 const Checkout = () => {
   const cartTotal = useAppSelector((state) => state.cartState.cartTotal);
-  // const [selectedId, setSelectedId] = useState('');
 
   if (cartTotal === 0) {
     return <SectionTitle text='Your cart is empty' />;
   }
+
+  const dummyAddresses: Address[] = [
+    {
+      id: '1h',
+      label: 'Home',
+      street: '123 Main St',
+      city: 'Los Angeles',
+      state: 'CA',
+      zip: '90001',
+      country: 'USA'
+    },
+    {
+      id: '2o',
+      label: 'Office',
+      street: '456 Corporate Blvd',
+      city: 'Los Angeles',
+      state: 'CA',
+      zip: '90012',
+      country: 'USA'
+    },
+  ];
 
   return (
     <>
       <SectionTitle text='Place your order' />
       <div className='mt-8 grid gap-8 md:grid-cols-2 items-start'>
         <div className='space-y-8'>
-          {/* <SavedShippingInfo
-            onSelectShipping={(address: ShippingInfo) => setSelectedId(address.name)}
-            selectedShippingId={selectedId}
-          /> */}
-          <CheckoutForm />
+          <div className='rounded-xl border bg-card text-card-foreground shadow p-6'>
+            <CardTitle className='mb-5'>Shipping Information</CardTitle>
+            <h3 className='p-2'>Select delivery address</h3>
+            <AddressSelection addresses={dummyAddresses} onChange={(selectedAddressId) => console.log(selectedAddressId)} />
+          </div>
+          <NewAddressForm />
           <CreditCardForm />
         </div>
         <div>
@@ -45,34 +69,4 @@ const Checkout = () => {
   );
 };
 
-
-// export const loader =
-//   (store: ReduxStore): LoaderFunction =>
-//   async (): Promise<Response | null> => {
-//     const user = store.getState().userState.user;
-//     if (!user) {
-//       toast({ description: 'Please login to continue' });
-//       return redirect('/login');
-//     }
-
-//     return null;
-//   };
-
-// const Checkout = () => {
-//   const cartTotal = useAppSelector((state) => state.cartState.cartTotal);
-//   if (cartTotal === 0) {
-//     return <SectionTitle text='Your cart is empty' />;
-//   }
-//   return (
-//     <>
-//       <SectionTitle text='Place your order' />
-//       <div className='mt-8 grid gap-8  md:grid-cols-2 items-start'>
-
-//         <CheckoutForm />
-//         <CartTotals />
-//         <CreditCardForm/>
-//       </div>
-//     </>
-//   );
-// };
 export default Checkout;
