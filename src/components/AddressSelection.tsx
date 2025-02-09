@@ -27,9 +27,6 @@ const AddressSelection: React.FC<AddressSelectionProps> = ({ addresses, onChange
           onSelect={handleSelect}
         />
       ))}
-      <Button className='bg-secondary text-white' type='button'>
-        <Link to='/save-address'>Add a new address</Link>
-      </Button>
     </div >
   );
 };

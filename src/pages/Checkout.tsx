@@ -22,7 +22,7 @@ export const loader = (store: ReduxStore): LoaderFunction =>
 const Checkout: React.FC = () => {
   const cartTotal = useAppSelector((state) => state.cartState.cartTotal);
   const user = useAppSelector((state) => state.userState.user);
-  
+
   // State for addresses and for showing the NewAddressForm
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [showNewAddressForm, setShowNewAddressForm] = useState(false);
@@ -71,22 +71,24 @@ const Checkout: React.FC = () => {
         <div className='space-y-8'>
           <div className='rounded-xl border bg-card text-card-foreground shadow p-6'>
             <h2 className='mb-5 text-xl font-bold'>Shipping Information</h2>
-            <h3 className='mb-4'>Select delivery address</h3>
-            {/* Render the AddressSelection component if addresses exist */}
-            {addresses.length > 0 ? (
-              <AddressSelection
-                addresses={addresses}
-                onChange={(selectedAddressId) =>
-                  console.log('Selected address ID:', selectedAddressId)
-                }
-              />
-            ) : (
-              <p>No saved addresses found.</p>
-            )}
+            {/* <div className='border rounded-xl p-2 border-gray-900 pb-4'> */}
+              <h3 className='mb-4'>Select delivery address:</h3>
+              {/* Render the AddressSelection component if addresses exist */}
+              {addresses.length > 0 ? (
+                <AddressSelection
+                  addresses={addresses}
+                  onChange={(selectedAddressId) =>
+                    console.log('Selected address ID:', selectedAddressId)
+                  }
+                />
+              ) : (
+                <p>-- No saved addresses found.</p>
+              )}
+            {/* </div> */}
             <div className='mt-4'>
               <button
                 onClick={() => setShowNewAddressForm(true)}
-                className='bg-secondary text-white py-2 px-4 rounded'
+                className='bg-secondary text-white py-2 px-4 rounded w-full'
               >
                 Add a new address
               </button>
