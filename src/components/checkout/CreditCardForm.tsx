@@ -1,4 +1,3 @@
-// CreditCardForm.tsx
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
 import { Elements } from '@stripe/react-stripe-js';

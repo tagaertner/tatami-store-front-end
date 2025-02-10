@@ -201,10 +201,6 @@ export interface ShippingInfo {
   isDefault?: boolean;
 }
 
-export interface SavedShippingInfoProps {
-  onSelectShipping: (address: ShippingInfo) => void;
-  selectedShippingId: string;
-}
 export interface CheckoutFormData {
   cardNumber: string;
   expiry: string; 

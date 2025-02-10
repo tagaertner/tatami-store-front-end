@@ -39,5 +39,4 @@ export { default as ComplexPaginationContainer } from './ComplexPaginationContai
 export {default as CategorySection} from './landing/CategorySection';
 export { default as CreditCardForm } from './checkout/CreditCardForm';
 export {default as SpecialOffers} from './landing/SpecialOffers';
-export { SavedShippingInfo } from './checkout/SavedShippingInfo';
  
