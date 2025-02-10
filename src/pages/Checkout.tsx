@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../lib/hooks';
-import { SectionTitle, CartTotals, CreditCardForm } from '../components';
+import { SectionTitle, CartTotals } from '../components';
 import NewAddressForm from '../components/checkout/NewAddressForm';
 import AddressSelection from '../components/AddressSelection';
 import { Address } from '../components/AddressCard';
-import { LoaderFunction, redirect } from 'react-router-dom';
+import CreditCardForm from '../components/checkout/CreditCardForm';
+import { LoaderFunction, redirect, useNavigate } from 'react-router-dom';
 import { toast } from '../components/ui/use-toast';
 import { type ReduxStore } from '../store';
 import { customFetch } from '../utils/customFetch';
@@ -20,14 +21,16 @@ export const loader = (store: ReduxStore): LoaderFunction =>
   };
 
 const Checkout: React.FC = () => {
+  const navigate = useNavigate();
   const cartTotal = useAppSelector((state) => state.cartState.cartTotal);
   const user = useAppSelector((state) => state.userState.user);
 
   // Ensure user exists (the loader should redirect if not)
   if (!user) return null;
 
-  // State for delivery addresses and for controlling NewAddressForm visibility
+  // State for addresses, selected address, and controlling NewAddressForm visibility
   const [addresses, setAddresses] = useState<Address[]>([]);
+  const [selectedAddressId, setSelectedAddressId] = useState<string | null>(null);
   const [showNewAddressForm, setShowNewAddressForm] = useState<boolean>(false);
 
   // Load addresses from backend when the component mounts
@@ -37,7 +40,6 @@ const Checkout: React.FC = () => {
         const response = await customFetch.get(`/addresses/user/${user.id}`);
         const data = response.data; // assume data is an array of address objects
         console.log('Loaded addresses:', data);
-        
         setAddresses(data);
       } catch (error) {
         console.error('Error loading addresses:', error);
@@ -61,6 +63,29 @@ const Checkout: React.FC = () => {
     }
   };
 
+  // Handle payment success by creating the order if an address is selected
+  const handlePaymentSuccess = async (paymentMethod: any) => {
+    if (!selectedAddressId) {
+      toast({ description: 'Please select a delivery address before processing payment.' });
+      return;
+    }
+    try {
+      console.log('Received payment method token:', paymentMethod.id);
+      // Create the order using your customFetch; adjust the endpoint as needed.
+      const response = await customFetch.post('/orders/', {
+        user_id: user.id,
+        address_id: selectedAddressId,
+      });
+      console.log('Order created:', response.data);
+      toast({ description: 'Order placed successfully!' });
+      // dispatch(clearCart());
+      navigate('/order-confirmation', { state: { orderDetails: response.data } }); ;
+    } catch (error) {
+      console.error('Error creating order:', error);
+      toast({ description: 'Order creation failed.' });
+    }
+  };
+
   // If cart is empty, display a message
   if (cartTotal === 0) {
     return <SectionTitle text="Your cart is empty" />;
@@ -77,9 +102,10 @@ const Checkout: React.FC = () => {
             {addresses.length > 0 ? (
               <AddressSelection
                 addresses={addresses}
-                onChange={(selectedAddressId) =>
-                  console.log('Selected address ID:', selectedAddressId)
-                }
+                onChange={(id) => {
+                  setSelectedAddressId(id);
+                  console.log('Selected address ID:', id);
+                }}
               />
             ) : (
               <p>-- No saved addresses found.</p>
@@ -105,11 +131,11 @@ const Checkout: React.FC = () => {
               onCancel={() => setShowNewAddressForm(false)}
             />
           )}
-
-          <CreditCardForm />
         </div>
-        <div>
+        <div className="space-y-8">
           <CartTotals />
+          {/* Pass the payment success callback to CreditCardForm */}
+         { (selectedAddressId !== null) && (<CreditCardForm onPaymentSuccess={handlePaymentSuccess} />)}
         </div>
       </div>
     </>
