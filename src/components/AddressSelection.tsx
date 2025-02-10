@@ -1,8 +1,5 @@
-// src/components/AddressSelection.tsx
 import React, { useState } from 'react';
 import AddressCard, { Address } from './AddressCard';
-import { Link } from 'react-router-dom';
-import { Button } from './ui/button';
 
 interface AddressSelectionProps {
   addresses: Address[];
@@ -10,7 +7,7 @@ interface AddressSelectionProps {
 }
 
 const AddressSelection: React.FC<AddressSelectionProps> = ({ addresses, onChange }) => {
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);  
 
   const handleSelect = (id: string) => {
     setSelectedId(id);
@@ -27,7 +24,7 @@ const AddressSelection: React.FC<AddressSelectionProps> = ({ addresses, onChange
           onSelect={handleSelect}
         />
       ))}
-    </div >
+    </div>
   );
 };
 

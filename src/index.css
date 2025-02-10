@@ -65,19 +65,8 @@
   .align-element {
     @apply mx-auto max-w-6xl px-8;
   }
-  
-  /* Mapbox Search Overrides */
-  .mapbox-search__suggestions {
-    @apply bg-white border border-gray-300 shadow-lg text-sm z-50;
-  }
-  .mapbox-search__suggestion {
-    @apply px-3 py-2 cursor-pointer transition-colors;
-  }
-  .mapbox-search__suggestion:hover,
-  .mapbox-search__suggestion:focus {
-    @apply bg-gray-100;
-  }
 }
+
 
 @layer base {
   * {
