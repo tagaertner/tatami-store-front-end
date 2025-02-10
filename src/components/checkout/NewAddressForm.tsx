@@ -100,7 +100,7 @@ const NewAddressForm: React.FC<NewAddressFormProps> = ({ onSubmit, onCancel, use
           />
         </div>
         <AddressAutofill accessToken={MAPBOX_ACCESS_TOKEN} onRetrieve={handleAutofillRetrieve}>
-          <Form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
+          <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
             <div>
               <div className="relative">
                 <Label htmlFor="address-line1">Address Line 1</Label>
@@ -147,7 +147,7 @@ const NewAddressForm: React.FC<NewAddressFormProps> = ({ onSubmit, onCancel, use
                 Cancel
               </Button>
             </div>
-          </Form>
+          </form>
         </AddressAutofill>
       </CardContent>
     </Card>
