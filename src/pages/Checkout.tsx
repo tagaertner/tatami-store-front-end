@@ -9,6 +9,8 @@ import { LoaderFunction, redirect, useNavigate } from 'react-router-dom';
 import { toast } from '../components/ui/use-toast';
 import { type ReduxStore } from '../store';
 import { customFetch } from '../utils/customFetch';
+import { clearCart } from '../features/cart/cartSlice';
+import { useAppDispatch } from '../lib/hooks';
 
 export const loader = (store: ReduxStore): LoaderFunction =>
   async (): Promise<Response | null> => {
@@ -48,6 +50,9 @@ const Checkout: React.FC = () => {
     loadAddresses();
   }, [user]);
 
+    const dispatch = useAppDispatch();
+  
+
   // Handler when a new address is submitted from NewAddressForm
   const handleNewAddressSubmit = async (addressData: Record<string, any>) => {
     try {
@@ -78,7 +83,7 @@ const Checkout: React.FC = () => {
       });
       console.log('Order created:', response.data);
       toast({ description: 'Order placed successfully!' });
-      // dispatch(clearCart());
+      dispatch(clearCart());
       navigate('/order-confirmation', { state: { orderDetails: response.data } }); ;
     } catch (error) {
       console.error('Error creating order:', error);
