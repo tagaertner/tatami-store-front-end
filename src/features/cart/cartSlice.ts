@@ -27,7 +27,7 @@ export const fetchCartItemsAsync = createAsyncThunk<
       return thunkAPI.rejectWithValue("User is not authenticated");
     }
     try {
-      const response = await customFetch.get(`/cart/${user.cognito_id}`);
+      const response = await customFetch.get(`/cart/${user.id}`);
       // Backend is assumed to return an array of cart items with keys:
       // cartID, productID, title, amount, price, image, availableStock
       return response.data;
@@ -54,7 +54,7 @@ export const removeItemFromCartAsync = createAsyncThunk<
     }
     try {      
       // DELETE endpoint: /cart/<user_id>/<product_id>
-      await customFetch.delete(`/cart/${user.cognito_id}/${productID}`);
+      await customFetch.delete(`/cart/${user.id}/${productID}`);
       return productID;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(
@@ -79,7 +79,7 @@ export const updateCartItemQuantityAsync = createAsyncThunk<
     }
     try {
       // PATCH endpoint: /cart/<user_id>/<product_id>
-      await customFetch.patch(`/cart/${user.cognito_id}/${productID}`, {
+      await customFetch.patch(`/cart/${user.id}/${productID}`, {
         quantity: newQuantity,
       });
       return { productID, amount: newQuantity };
@@ -102,7 +102,9 @@ export const addItemToCartAsync = createAsyncThunk<
     if (!user) {
       return thunkAPI.rejectWithValue("User is not authenticated");
     }
-    const userId = user.cognito_id;
+    const userId = user.id;
+    console.log('addItemToCartAsync >>> cartItem:', cartItem);
+    
 
     try {
       // Call the backend with minimal data required: product_id and quantity.

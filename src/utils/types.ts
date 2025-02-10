@@ -160,7 +160,7 @@ export type Params = {
   page?: number;
 };
 export type User = {
-  cognito_id: string;
+  id: string;
   email: string;
   last_name: string;
   first_name: string;

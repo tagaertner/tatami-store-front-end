@@ -30,7 +30,7 @@ export {default as  CartItemsList } from "./CartItemsList";
 export {default as CartTotals} from "./checkout/CartTotals";
 export {default as SubmitBtn} from './SubmitBtn';
 export {default as Footer} from './Footer'
-export {default as CheckoutForm} from './checkout/CheckoutForm';
+export {default as CheckoutForm} from './checkout/NewAddressForm';
 export {default as OrdersList} from './OrdersList';
 export {default as OrderHistory} from'./profile /OrderHistory';
 export { default as Setting } from './userProfile/Setting'; 

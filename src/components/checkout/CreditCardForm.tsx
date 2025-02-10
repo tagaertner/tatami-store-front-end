@@ -1,102 +1,27 @@
-
+// CreditCardForm.tsx
+import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
-import { Input } from '../../components/ui/input';
-import { Label } from '../../components/ui/label';
-import { Button } from '../../components/ui/button';
-import { clearCart } from '../../features/cart/cartSlice';
-import { redirect } from 'react-router-dom'
-import { ReduxStore } from '../../store';
-// import { Form, useActionData, useNavigation } from 'react-router-dom';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import PaymentDetailsForm from '../PaymentDetailsForm';
 
-export const action = (store: ReduxStore) => async ({ request }: { request: Request }) => {
-  const formData = await request.formData();
-  // const { cartState } = store.getState();
- 
- 
-  try {
-    const response = await fetch('/api/create-payment-intent', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        // amount: orderTotal,
-        paymentMethod: {
-          card: formData.get('cardNumber'),
-          exp_month: formData.get('expiry')?.toString().split('/')[0],
-          exp_year: formData.get('expiry')?.toString().split('/')[1],
-          cvc: formData.get('cvc')
-        },
-        customer: formData.get('name')
-      })
-    });
- 
-    const { paymentIntent } = await response.json();
-    if (!paymentIntent || paymentIntent.status !== 'succeeded') {
-      throw new Error('Payment failed');
-    }
- 
-    store.dispatch(clearCart());
-    return redirect('/order-confirmation');
-    
-  } catch (error) {
-    return { error: error instanceof Error ? error.message :'Payment failed' 
+interface CreditCardFormProps {
+  onPaymentSuccess: (paymentMethod: any) => void;
+}
 
-    }
-  }
- };
+function CreditCardForm({ onPaymentSuccess }: CreditCardFormProps) {
+  const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
-function CreditCardForm() {
   return (
-    <Card className='w-full max-w-md mx-auto'>
+    <Card className="w-full max-w-md mx-auto">
       <CardHeader>
         <CardTitle>Payment Details</CardTitle>
         <CardDescription>Enter your credit card information</CardDescription>
       </CardHeader>
       <CardContent>
-        <form className='space-y-4'>
-          <div className='space-y-2'>
-            <Label htmlFor='cardNumber'>Card Number</Label>
-            <Input 
-              id='cardNumber'
-              placeholder='1234 5678 9012 3456'
-              type='text'
-              maxLength={19}
-            />
-          </div>
-          
-          <div className='grid grid-cols-2 gap-4'>
-            <div className='space-y-2'>
-              <Label htmlFor='expiry'>Expiry Date</Label>
-              <Input 
-                id='expiry'
-                placeholder='MM/YY'
-                type='text'
-                maxLength={5}
-              />
-            </div>
-            <div className='space-y-2'>
-              <Label htmlFor='cvc'>CVC</Label>
-              <Input 
-                id='cvc'
-                placeholder='123'
-                type='text'
-                maxLength={3}
-              />
-            </div>
-          </div>
-
-          <div className='space-y-2'>
-            <Label htmlFor='name'>Cardholder Name</Label>
-            <Input 
-              id='name'
-              placeholder='John Doe'
-              type='text'
-            />
-          </div>
-
-          <Button type='submit' className='w-full'>
-            Place Your Order
-          </Button>
-        </form>
+        <Elements stripe={stripePromise}>
+          <PaymentDetailsForm onPaymentSuccess={onPaymentSuccess} />
+        </Elements>
       </CardContent>
     </Card>
   );

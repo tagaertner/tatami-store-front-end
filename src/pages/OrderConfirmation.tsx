@@ -3,7 +3,7 @@ import { SectionTitle } from '../components';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { LoaderFunction, redirect } from 'react-router-dom';
+import { LoaderFunction, redirect} from 'react-router-dom';
 import { toast } from '../components/ui/use-toast';
 import { type ReduxStore } from '../store';
 
@@ -23,13 +23,16 @@ const OrderConfirmation = () => {
   const { orderDetails } = useAppSelector((state) => state.orderState);
   const { user } = useAppSelector((state) => state.userState);
 
+  console.log(location.state);
+  
+
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
-      <SectionTitle text="Order Confirmation" />
+      <SectionTitle text="Order Confirmation"/>
       
       <Card className="mt-8">
         <CardHeader>
-          <CardTitle className="text-2xl text-[hsl(17.5_88.3%_40.4%)]">
+          <CardTitle className="text-2xl text-primary">
             Thank you for your order, {user?.first_name}!
           </CardTitle>
         </CardHeader>
