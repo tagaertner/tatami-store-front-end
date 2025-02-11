@@ -34,14 +34,6 @@ const OrderConfirmation = () => {
         </CardHeader>
         
         <CardContent>
-        <div className="border-t border-b py-4 my-4">
-          <h3 className="font-medium mb-2">Order Summary</h3>
-          <p className="text-muted-foreground">Name: {orderDetails?.name}</p>
-          <p className="text-muted-foreground">Address: {orderDetails?.address}</p>
-          <p className="text-muted-foreground">Total Items: {orderDetails?.numItemsInCart}</p>
-          <p className="text-muted-foreground">Order Total: {orderDetails?.orderTotal}</p>
-        </div>
-          
           <div className="mt-6 flex gap-4">
             <Button asChild>
               <Link to="/products">Continue Shopping</Link>
