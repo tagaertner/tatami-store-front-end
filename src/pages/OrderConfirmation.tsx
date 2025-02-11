@@ -23,9 +23,6 @@ const OrderConfirmation = () => {
   const { orderDetails } = useAppSelector((state) => state.orderState);
   const { user } = useAppSelector((state) => state.userState);
 
-  console.log(location.state);
-  
-
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
       <SectionTitle text="Order Confirmation"/>

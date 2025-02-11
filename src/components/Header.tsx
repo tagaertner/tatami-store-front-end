@@ -17,11 +17,7 @@ function Header() {
     // Clear user session in Redux
     dispatch(clearCart());
     dispatch(logoutUser());
-  
-    // Clear Cookies
-    document.cookie = "user_data=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    
-  
+
     // AWS Cognito Logout URL
     const cognitoLogoutUrl = import.meta.env.VITE_TATAMI_BE + '/auth/logout';
   
@@ -53,41 +49,4 @@ function Header() {
   );
 }
 
-
-
-
-// const [user, setUser] = useState<{username:string} | null>({
-//   username: 'demo user',
-// });
-//   const handleLogout =() =>{
-//     setUser(null);
-//     navigate('/');
-//   }
-//   return (
-//     <header>
-//     <div className='aling-element flex justify-center sm:justify-end py-2'>
-//       {/*USER*/}
-//   {user? (
-//     <div className='flex gap-x-2 sm:gap:-x-8 items-center'>
-//     <p className='text-xs sm:text-sm'>Hello, {user.username}</p>
-//   <Button variant='link' size='sm' onClick={handleLogout}>
-//     Logout
-//   </Button>
-//     </div>
-//     ) : (
-//     <div className='flex gap-x-6 justify-center items-center -mr-4'>
-//     <Button asChild variant='link' size='sm'>
-//       <Link to='/login'>Sign in / Guest</Link>
-//       </Button>
-
-//       <Button asChild variant='link' size='sm'>
-//       <Link to='/register'>Register</Link>
-//       </Button>
-//       </div>
-//       )}
-//     </div>
-//   </header>
-   
-//   )
-// }
 export default Header;

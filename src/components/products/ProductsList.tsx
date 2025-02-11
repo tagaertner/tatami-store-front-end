@@ -4,8 +4,6 @@ import { Card, CardContent } from '../ui/card';
 
 function ProductsList() {
   const { data: products } = useLoaderData() as ProductsResponse;
-  console.log("products in ProductsList", products);
-  
 
   // Add guard clause
   if (!products) {

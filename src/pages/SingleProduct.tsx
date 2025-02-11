@@ -26,8 +26,6 @@ function SingleProduct() {
   const { image_url, name, price, description, id } = product;
   const dollarsAmount = formatAsDollars(price);
   const [amount, setAmount] = useState(1);
-
-  console.log('SingleProduct >>> product:', product);
   
   // Initialize the Redux dispatch hook
   const dispatch = useAppDispatch();

@@ -9,9 +9,6 @@ function Cart() {
   const numItemsInCart = useAppSelector(
     (state) => state.cartState.numItemsInCart
   );
-  console.log('CART PAGE >> numItemsInCart', numItemsInCart);
-  console.log('CART PAGE >> user', user);
-  
 
   if (numItemsInCart === 0) {
     return <SectionTitle text='Empty cart ☹️' />;
