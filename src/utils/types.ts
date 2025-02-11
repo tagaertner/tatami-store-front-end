@@ -63,16 +63,30 @@ export type OrdersResponse = {
   };
 };
 // changed for python
-export type Order = {
-  id: string;
-  attributes: {
-    name: string;
-    address: string;
-    numItemsInCart: number;
-    orderTotal: string;
-    createdAt: string;
-  };
-};
+// export type Order = {
+//   id: string;
+//   attributes: {
+//     name: string;
+//     address: string;
+//     numItemsInCart: number;
+//     orderTotal: string;
+//     createdAt: string;
+//   };
+// };
+interface Order {
+  order_id: string;
+  user_id: string;
+  address_id: number;
+  total_amount: number;
+  order_date: string;
+  status: string;
+  items: {
+    product_id: string;
+    product_name: string;
+    quantity: number;
+    price: number;
+  }[];
+}
 // export type Product = {
 //   id: number;
 //   attributes: {
