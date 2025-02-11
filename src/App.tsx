@@ -8,39 +8,28 @@ import {
   Cart,
   About,
   Register,
-  // Login,
   Checkout,
   Orders,
-  // ContactUs
 } from './pages';
 import Privacy from './components/Privacy';
 import Terms from './components/Terms';
 import { ErrorElement } from './components';
-
 import { loader as landingLoader } from './pages/Landing';
 import { loader as productsLoader } from './pages/Products'
 import { loader as singleProductLoader } from './pages/SingleProduct'
 import { loader as checkoutLoader } from './pages/Checkout';
 import { loader as ordersLoader } from './pages/Orders';
 import OrderConfirmation, { loader as orderConfirmationLoader } from './pages/OrderConfirmation';
-import ContactUs/* , { loader as contactLoader } */ from './pages/ContactUs';
+import ContactUs from './pages/ContactUs';
 import UserProfilePage from './pages/UserProfilePage'
 import AuthHandler from './components/AuthHandler';
 import CartInitializer from './components/CartInitializer';
-// actions
-
 import { action as registerUser } from './pages/Register';
-// import { action as loginUser } from './pages/Login';
-// import { checkoutAction } from './actions/checkoutActions';
 import { checkoutCartTotalAction } from './actions/checkoutCartTotalActions';
-
-
 import { store } from './store';
 
-
-
 const router = createBrowserRouter([
-  {// homelayout is the parent
+  {
     path: '/',
     element: (
       <>
@@ -70,7 +59,6 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         element: <ContactUs />,
-        // loader: contactLoader(store),
         errorElement: <ErrorElement/>  
       },
       {
@@ -102,7 +90,6 @@ const router = createBrowserRouter([
         loader: checkoutLoader(store),
         children: [{
           path: 'address',
-          // action: checkoutAction(store),
         },
         {
           path: 'payment',
@@ -116,7 +103,6 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         element: <ContactUs />,
-        // loader: contactLoader(store)  
       },
       {
         path: 'order-confirmation',
@@ -138,12 +124,6 @@ const router = createBrowserRouter([
 
     ]
   },
-  // {
-  //   path:'/login', 
-  //   // element:<Login/>, 
-  //   errorElement: <Error/>,
-  //   // action:loginUser(store),
-  // },
   {
     path: '/register',
     element: <Register />,

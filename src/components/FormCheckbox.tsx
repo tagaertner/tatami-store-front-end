@@ -2,7 +2,6 @@ import { Label } from './ui/label';
 import { Checkbox } from './ui/checkbox';
 import { FormCheckboxProps } from '../utils';
 
-
 function FormCheckbox({ name, label, defaultValue }: FormCheckboxProps) {
   const defaultChecked = defaultValue === 'on' ? true : false;
 

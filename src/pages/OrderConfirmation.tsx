@@ -7,7 +7,6 @@ import { LoaderFunction, redirect} from 'react-router-dom';
 import { toast } from '../components/ui/use-toast';
 import { type ReduxStore } from '../store';
 
-
 export const loader =
   (store: ReduxStore): LoaderFunction =>
   async (): Promise<Response | null> => {
@@ -23,8 +22,6 @@ const OrderConfirmation = () => {
   const { orderDetails } = useAppSelector((state) => state.orderState);
   const { user } = useAppSelector((state) => state.userState);
 
-  console.log(location.state);
-  
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">

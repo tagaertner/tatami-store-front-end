@@ -21,12 +21,7 @@ const Hero = () => {
     </Button>
   </div>
   
-  {/* Carousel with original margins */}
   <div className='px-8'>
-  {/* <section className='max-w-[1440px] mx-auto px-8'>
-        <h2 className='text-3xl font-bold text-center mb-8'>Features</h2>
-        <FeaturedProducts /> 
-      </section> */}
     <HeroCarousel />
   </div>
 </section>

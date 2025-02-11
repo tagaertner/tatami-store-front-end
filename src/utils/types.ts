@@ -1,26 +1,3 @@
-// export type ProductsResponse = {
-//   data: Product[];
-//   meta: ProductsMeta;
-// };
-// change for python
-// export type ProductsResponse = {
-//   data: Product[];
-//   meta: {
-//     pagination: {
-//       total: number;
-//       pageCount: number;
-//       page: number;
-//       pageSize: number;
-//     };
-//     categories: string[];
-//   };
-// };
-// export type SelectProductAmount = {
-//   amount: number;
-//   stock: number;
-//   setAmount: (value: number, stock: number) => void;
-// }
-
 export type ProductsResponse = {
   data: Product[];
   categories: string[];
@@ -43,7 +20,7 @@ export type CartState = {
   cartItems: CartItem[];
   numItemsInCart: number;
   cartTotal: number;
-  // shipping: number;
+
   tax: number;
   orderTotal: number;
 };
@@ -62,7 +39,7 @@ export type OrdersResponse = {
     pagination: Pagination;
   };
 };
-// changed for python
+
 export type Order = {
   id: string;
   attributes: {
@@ -73,35 +50,7 @@ export type Order = {
     createdAt: string;
   };
 };
-// export type Product = {
-//   id: number;
-//   attributes: {
-//     category: string;
-//     createdAt: string;
-//     description: string;
-//     featured: boolean;
-//     image: string;
-//     price: string;
-//     publishedAt: string;
-//     shipping: boolean;
-//     title: string;
-//     updatedAt: string;
-    
-//   };
-// };
 
-// export type Product ={
-//   id: string,
-//   attributes: {
-//   description: string,
-//   image: string,
-//   is_active: boolean,
-//   name: string,
-//   price: number,
-//   stock: number,
-// }
-
-// };
 export type Product = {
   id: string;
   description: string;
@@ -124,7 +73,6 @@ export type ProductsMeta = {
   companies: string[];
 };
 
-
 export type FormRangeProps = {
   label: string;
   name: string;
@@ -136,13 +84,6 @@ export type FormCheckboxProps = {
   label?: string;
   defaultValue?: string | number | boolean; 
 };
-
-
-// export type ProductsMeta = {
-//   categories: string[];
-//   companies: string[];
-//   pagination: Pagination;
-// };
 
 export type Pagination = {
   total: number;
@@ -159,22 +100,23 @@ export type Params = {
   shipping?: string;
   page?: number;
 };
+// 
 export type User = {
-  id: string;
+  id?: string;
+  username: string;
   email: string;
-  last_name: string;
-  first_name: string;
+  jwt: string;
+  first_name: string;  
+  last_name: string;   
   phone: string;
-};
+}
 export type UserInfoProps = {
-  user: User;
+  user: User | null;
 };
 export interface UserState {
   user: User | null;
 }
 
-
-// export type ProductsResponseWithParams = ProductsResponse & { params: Params };
 export type ProductsResponseWithParams = ProductsResponse & {
   params: Record<string, string>;
 };
@@ -189,7 +131,6 @@ export interface Feature {
   title: string;
   description: string;
 }
-
 export interface ShippingInfo {
   id?: string; 
   name: string;
@@ -200,7 +141,6 @@ export interface ShippingInfo {
   zipCode: string;
   isDefault?: boolean;
 }
-
 export interface SavedShippingInfoProps {
   onSelectShipping: (address: ShippingInfo) => void;
   selectedShippingId: string;
@@ -211,10 +151,29 @@ export interface CheckoutFormData {
   cvc: string;
   name: string;
 }
-
 export interface CartTotalRowProps {
   label: string;
   amount: number;
   lastRow?: boolean;
 }
 
+export interface AddressFormData {
+  lable: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  // Add other address fields
+}
+
+export interface PaymentMethodData {
+  id: string;
+  type: string;
+  // Add other payment fields
+}
+
+export interface NewAddressFormProps {
+  userId: string;
+  onSubmit: (data: AddressFormData) => Promise<void>;
+  onCancel: () => void;
+}

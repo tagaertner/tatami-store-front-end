@@ -1,7 +1,7 @@
-// pages/UserProfilePage.tsx
 import { useAppSelector } from '../hooks/hooks';
 import { Navigate } from 'react-router-dom';
-import { Setting, UserInfo, OrderHistory } from '../components';
+import { UserInfo, OrderHistory } from '../components';
+import { User } from '../utils/types'
 
 const UserProfilePage = () => {
   const { user } = useAppSelector(state => state.userState);
@@ -12,9 +12,8 @@ const UserProfilePage = () => {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      <UserInfo user={user} />
+      <UserInfo user={user as User} />
       <OrderHistory />
-      {/* <Setting /> */}
     </div>
   );
 };

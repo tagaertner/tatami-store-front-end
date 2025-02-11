@@ -1,20 +1,10 @@
 import { useAppSelector } from '../lib/hooks';
 import { SectionTitle } from '../components';
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
-// import { LoaderFunction, redirect } from 'react-router-dom';
 import { toast } from '../components/ui/use-toast';
-// import { type ReduxStore } from '../store';
 import ContactForm, { ContactFormData } from '../components/ContactForm';
 import { useState } from 'react';
 
-// export const loader = (store: ReduxStore): LoaderFunction => async (): Promise<Response | null> => {
-  // const user = store.getState().userState.user;
-  // if (!user) {
-  //   toast({ description: 'Please login to contact us' });
-  //   return redirect('/login');
-  // }
-//   return null;
-// };
 
 const ContactUs = () => {
   const { user } = useAppSelector((state) => state.userState);
@@ -23,7 +13,7 @@ const ContactUs = () => {
   const handleSubmit = async (formData: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      // Simulate API call
+   
       await new Promise(resolve => setTimeout(resolve, 1000));
       console.log('Form submitted:', formData);
       toast({ 

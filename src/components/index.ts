@@ -38,6 +38,5 @@ export {default as UserInfo} from './profile /UserInfo';
 export { default as ComplexPaginationContainer } from './ComplexPaginationContainer';
 export {default as CategorySection} from './landing/CategorySection';
 export { default as CreditCardForm } from './checkout/CreditCardForm';
-export {default as SpecialOffers} from './landing/SpecialOffers';
-export { SavedShippingInfo } from './checkout/SavedShippingInfo';
+
  

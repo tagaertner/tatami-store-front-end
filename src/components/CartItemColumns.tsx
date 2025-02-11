@@ -3,7 +3,6 @@ import { useAppDispatch }  from '../hooks/hooks';
 import { Button } from './ui/button';
 import { removeItemFromCartAsync } from '../features/cart/cartSlice';
 import SelectProductAmount from './SelectProductAmount';
-// import { QuantitySelector } from '../components/cart/QuantitySelector';
 import { Mode } from './SelectProductAmount';
 import { updateCartItemQuantityAsync } from '../features/cart/cartSlice';
 
@@ -34,14 +33,11 @@ export const SecondColumn = ({
 }) => {
   const dispatch = useAppDispatch();
 
-  // Dispatch the async thunk for removal using the productID.
   const removeItemFromTheCart = () => {
     dispatch(removeItemFromCartAsync(productID));
   };
 
-  // Dispatch the async thunk to update quantity on the backend.
   const setAmount = (value: number, stock: number) => {
-    // Ensure the value does not exceed stock.
     if (value > stock) value = stock;
     dispatch(updateCartItemQuantityAsync({ productID, newQuantity: value }));
   };

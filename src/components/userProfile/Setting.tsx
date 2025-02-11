@@ -1,5 +1,3 @@
-// components/profile/Settings.tsx
-
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Button } from "../ui/button";
 import { Settings as SettingsIcon } from 'lucide-react';
@@ -29,7 +27,6 @@ const Setting = () => {
             <DialogHeader>
               <DialogTitle>Change Password</DialogTitle>
             </DialogHeader>
-            {/* Password form */}
           </DialogContent>
         </Dialog>
 
@@ -43,7 +40,6 @@ const Setting = () => {
             <DialogHeader>
               <DialogTitle>Update Shipping Address</DialogTitle>
             </DialogHeader>
-            {/* Address form */}
           </DialogContent>
         </Dialog>
 
@@ -57,7 +53,6 @@ const Setting = () => {
             <DialogHeader>
               <DialogTitle>Manage Payment Methods</DialogTitle>
             </DialogHeader>
-            {/* Payment form */}
           </DialogContent>
         </Dialog>
       </CardContent>

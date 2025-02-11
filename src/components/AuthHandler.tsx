@@ -7,7 +7,7 @@ const AuthHandler: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  // Get user from Redux store
+
   const user = useAppSelector((state) => state.userState.user);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const AuthHandler: React.FC = () => {
         }
       }
     }
-    // Only dispatch loginUser if there is userData and user is not already in state
+
     if (userData && !user) {
       dispatch(loginUser(userData));
     }

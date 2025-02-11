@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
-
 export interface Address {
   id: string;
   label: string;
@@ -12,7 +11,6 @@ export interface Address {
   house_number: string;
   unit: string;
 }
-
 interface AddressCardProps {
   address: Address;
   selected: boolean;

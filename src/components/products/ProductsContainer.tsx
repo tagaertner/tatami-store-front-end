@@ -11,7 +11,7 @@ function ProductsContainer() {
   const [layout, setLayout] = useState<'grid' | 'list'>('grid');
   const loaderData = useLoaderData() as ProductsResponse;
 
-  // Guard clause: if meta is missing, show a loading state or a message.
+  
   if (!loaderData.meta || !loaderData.meta.pagination) {
     return <div>Loading...</div>;
   }

@@ -10,14 +10,12 @@ type QuantitySelectorProps = {
 };
 
 export const QuantitySelector: React.FC<QuantitySelectorProps> = ({ value, onChange, max }) => {
-  // Increments the quantity if it's below max
   const handleIncrement = () => {
     if (value < max) {
       onChange(value + 1, max);
     }
   };
-
-  // Decrements the quantity if it's above 1
+  
   const handleDecrement = () => {
     if (value > 1) {
       onChange(value - 1, max);

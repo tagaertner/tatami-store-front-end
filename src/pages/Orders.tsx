@@ -23,9 +23,6 @@ export const loader = (store:ReduxStore):LoaderFunction => async({request}):Prom
   try {
     const response = await customFetch.get<OrdersResponse>('/orders', {
       params,
-      // headers: {
-      //   Authorization: `Bearer ${user.jwt}`,
-      // },
     });
 
     return { ...response.data };
@@ -35,7 +32,6 @@ export const loader = (store:ReduxStore):LoaderFunction => async({request}):Prom
     return null;
   }
 };
-
 
 function Orders() {
   const { meta } = useLoaderData() as OrdersResponse;
