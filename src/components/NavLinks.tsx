@@ -6,7 +6,7 @@ import { useAppSelector } from '../lib/hooks';
 function NavLinks() {
   const user = useAppSelector((state)=> state.userState.user)
   return (
-    <div className='hidden lg:flex justify-center items-center gap-x-4'>
+    <div className='hidden lg:flex justify-between items-center gap-x-10 pe-16'>
       {links.map((link) => {
         const restrictedRoutes = link.href === 'checkout' || link.href === 'orders' || link.href === 'profile'
         if(restrictedRoutes && !user) return null;

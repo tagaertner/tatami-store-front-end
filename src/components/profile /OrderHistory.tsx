@@ -9,12 +9,12 @@ const OrderHistory = () => {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center align-center space-x-4 pe-5">
           <Package className="h-6 w-6" />
           <h3 className="text-xl font-semibold">Order History</h3>
         </div>
       </CardHeader>
-      <CardContent className="flex justify-end">
+      <CardContent className="flex justify-center w-full">
         <Button asChild>
           <Link to="/orders">View Orders</Link>
         </Button>

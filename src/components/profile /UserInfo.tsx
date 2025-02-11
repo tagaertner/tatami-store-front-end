@@ -25,7 +25,6 @@ const UserInfo = ({ user }:UserProps) => {
             <p className="text-gray-500">{user.phone}</p>
           </div>
         </div>
-        <Button>Edit Profile</Button>
       </CardHeader>
     </Card>
   );
