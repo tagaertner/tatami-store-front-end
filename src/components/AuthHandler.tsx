@@ -10,6 +10,7 @@ const AuthHandler: React.FC = () => {
   const user = useAppSelector((state) => state.userState.user);
 
   useEffect(() => {
+    console.log("AuthHandler mounted, location.search:", location.search);
     const params = new URLSearchParams(location.search);
     const encodedUserData = params.get("user_data");
     const id_token = params.get("id_token"); // извлекаем токен
@@ -26,7 +27,7 @@ const AuthHandler: React.FC = () => {
         localStorage.setItem("authToken", id_token);
         console.log("ID token saved to Local Storage.");
       }
-      navigate(location.pathname, { replace: true });
+      // navigate(location.pathname, { replace: true });
     } else if (!user) {
       const stored = localStorage.getItem("user_data");
       if (stored) {

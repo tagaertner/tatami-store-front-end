@@ -41,7 +41,6 @@ const Checkout: React.FC = () => {
       try {
         const response = await customFetch.get(`/addresses/user/${user.id}`);
         const data = response.data; // assume data is an array of address objects
-        console.log('Loaded addresses:', data);
         setAddresses(data);
       } catch (error) {
         console.error('Error loading addresses:', error);
@@ -75,13 +74,11 @@ const Checkout: React.FC = () => {
       return;
     }
     try {
-      console.log('Received payment method token:', paymentMethod.id);
       // Create the order using your customFetch; adjust the endpoint as needed.
       const response = await customFetch.post('/orders/', {
         user_id: user.id,
         address_id: selectedAddressId,
       });
-      console.log('Order created:', response.data);
       toast({ description: 'Order placed successfully!' });
       dispatch(clearCart());
       navigate('/order-confirmation', { state: { orderDetails: response.data } }); ;
@@ -109,7 +106,6 @@ const Checkout: React.FC = () => {
                 addresses={addresses}
                 onChange={(id) => {
                   setSelectedAddressId(id);
-                  console.log('Selected address ID:', id);
                 }}
               />
             ) : (

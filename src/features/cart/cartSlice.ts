@@ -103,8 +103,6 @@ export const addItemToCartAsync = createAsyncThunk<
       return thunkAPI.rejectWithValue("User is not authenticated");
     }
     const userId = user.id;
-    console.log('addItemToCartAsync >>> cartItem:', cartItem);
-    
 
     try {
       // Call the backend with minimal data required: product_id and quantity.

@@ -58,7 +58,6 @@ const NewAddressForm: React.FC<NewAddressFormProps> = ({ onSubmit, onCancel, use
         longitude: response.features[0].geometry.coordinates[0],
       };
       setNewAddressInfo(info);
-      console.log('Retrieved Address Info:', info);
       setMinimapFeature(response.features[0]);
       setTimeout(() => {
         setMinimapFeature((prev: any) => ({ ...prev }));
@@ -80,7 +79,6 @@ const NewAddressForm: React.FC<NewAddressFormProps> = ({ onSubmit, onCancel, use
         label: addressLabel,
         unit: addressLine2,
       };
-      console.log('Submitting address:', updatedAddressInfo);
       onSubmit(updatedAddressInfo);
     },
     [newAddressInfo, addressLabel, addressLine2, onSubmit]

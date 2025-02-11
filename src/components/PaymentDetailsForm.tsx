@@ -34,7 +34,6 @@ const PaymentDetailsForm: React.FC<PaymentDetailsFormProps> = ({ onPaymentSucces
       console.error('Error creating payment method:', error);
       toast({ description: error.message });
     } else {
-      console.log('Payment Method Token:', paymentMethod);
       toast({ description: 'Payment method created successfully!' });
       if (onPaymentSuccess) {
         onPaymentSuccess(paymentMethod);
