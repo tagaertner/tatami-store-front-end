@@ -27,7 +27,7 @@ const AuthHandler: React.FC = () => {
         localStorage.setItem("authToken", id_token);
         console.log("ID token saved to Local Storage.");
       }
-      // navigate(location.pathname, { replace: true });
+      navigate(location.pathname, { replace: true });
     } else if (!user) {
       const stored = localStorage.getItem("user_data");
       if (stored) {
