@@ -11,7 +11,6 @@ function CartItemsList() {
   const user = useAppSelector((state) => state.userState.user);
 
   useEffect(() => {
-    // Load cart items from the backend on mount (or when user changes)
     if (user) {
       dispatch(fetchCartItemsAsync());
     }
@@ -20,7 +19,6 @@ function CartItemsList() {
   return (
     <div>
       {cartItems.map((cartItem) => {        
-        // Destructure product_name and also title if present, then choose one.
         const { title, price, image, amount, productID, availableStock} = cartItem;
         
         return (

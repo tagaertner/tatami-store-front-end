@@ -1,4 +1,3 @@
-// import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import StrawField from '/assets/images/StrawField.jpg';
 
@@ -12,7 +11,7 @@ const AboutStory = () => (
         We're not your typical tatami company. We blend centuries-old craftsmanship 
         with contemporary flair to create mats that make statements.
       </p>
-      {/* <Button variant="outline">Read More</Button> */}
+  
     </div>
     <Card>
       <CardContent className="p-6">

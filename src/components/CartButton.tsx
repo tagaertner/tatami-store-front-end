@@ -3,8 +3,6 @@ import { ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../lib/hooks';
 
-
-
 function CartButton() {
   const numItemsInCart = useAppSelector(
     (state) => state.cartState.numItemsInCart

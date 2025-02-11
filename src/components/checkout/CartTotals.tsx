@@ -3,7 +3,6 @@ import { formatAsDollars } from '../../utils';
 import { Card, CardTitle } from '../../components/ui/card';
 import { Separator } from '../ui/separator';
 
-
 function CartTotals() {
   const { cartTotal, tax, orderTotal } = useAppSelector(
     (state) => state.cartState

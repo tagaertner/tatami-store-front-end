@@ -21,7 +21,6 @@ const Hero = () => {
     </Button>
   </div>
   
-  {/* Carousel with original margins */}
   <div className='px-8'>
     <HeroCarousel />
   </div>

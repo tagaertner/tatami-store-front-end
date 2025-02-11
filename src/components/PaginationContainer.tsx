@@ -1,4 +1,3 @@
-// 
 import {
   Pagination,
   PaginationContent,
@@ -16,7 +15,6 @@ function PaginationContainer() {
   const { meta } = useLoaderData() as ProductsResponseWithParams;
   const { search, pathname } = useLocation();
 
-  // Then add your conditional checks
   if (!meta?.pagination) {
     return null;
   }

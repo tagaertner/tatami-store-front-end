@@ -1,5 +1,3 @@
-// components/profile/OrderHistory.tsx
-
 import { Card, CardHeader, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
 import { Package } from 'lucide-react';

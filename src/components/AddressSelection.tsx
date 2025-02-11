@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import AddressCard, { Address } from './AddressCard';
-
 interface AddressSelectionProps {
   addresses: Address[];
   onChange: (selectedAddressId: string) => void;

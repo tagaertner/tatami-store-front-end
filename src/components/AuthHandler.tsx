@@ -7,6 +7,7 @@ const AuthHandler: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
   const user = useAppSelector((state) => state.userState.user);
 
   useEffect(() => {

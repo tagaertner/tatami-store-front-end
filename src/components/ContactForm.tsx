@@ -5,13 +5,10 @@ import { Loader2 } from "lucide-react";
 import { Textarea } from "../components/ui/textarea";
 import { Label } from '../components/ui/label';
 import { Checkbox } from "../components/ui/checkbox";
-
-
 interface ContactFormProps {
   onSubmit: (formData: ContactFormData) => void;
   isSubmitting?: boolean;
 }
-
 export interface ContactFormData {
   name: string;
   email: string;

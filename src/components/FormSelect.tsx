@@ -5,9 +5,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from './ui/select';
-
 import { Label } from './ui/label';
-
 
 type SelectInputProps = {
   name: string;

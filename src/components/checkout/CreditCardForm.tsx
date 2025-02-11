@@ -1,9 +1,7 @@
-import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import PaymentDetailsForm from '../PaymentDetailsForm';
-
 interface CreditCardFormProps {
   onPaymentSuccess: (paymentMethod: any) => void;
 }

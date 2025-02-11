@@ -29,9 +29,7 @@ export const loader = (store: ReduxStore): LoaderFunction => async ({ request })
     return redirect('/login');
   }
   try {
-    // Предполагается, что BE-эндпоинт для получения заказов имеет вид /orders/<user_id>
     const response = await customFetch.get(`/orders/${user.id}`);
-    // response.data должен содержать массив заказов
     return response.data;
   } catch (error) {
     console.error('Error fetching orders:', error);

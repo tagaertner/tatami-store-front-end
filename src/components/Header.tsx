@@ -3,28 +3,21 @@ import { Button } from './ui/button';
 import { useAppDispatch, useAppSelector } from '../lib/hooks';
 import { logoutUser } from '../features/user/userSlice';
 import { clearCart } from '../features/cart/cartSlice';
-// import { useToast } from './ui/use-toast';
-
 
 function Header() {
-  // const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  // const { toast } = useToast();
 
   const user = useAppSelector((state) => state.userState.user);
 
   const handleLogout = () => {
-    // Clear user session in Redux
     dispatch(clearCart());
     dispatch(logoutUser());
 
     // AWS Cognito Logout URL
     const cognitoLogoutUrl = import.meta.env.VITE_TATAMI_BE + '/auth/logout';
-  
-    // Redirect User to Cognito Logout
+
     window.location.href = cognitoLogoutUrl;
   };
-
 
   return (
     <header>

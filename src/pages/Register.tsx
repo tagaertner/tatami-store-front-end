@@ -12,14 +12,11 @@ export const action: ActionFunction = async ({
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   try {
-    // the new promise makes it slower. 
-    // await new Promise((resolve) => setTimeout(resolve, 2000));
     await customFetch.post('/auth/local/register', data);
    
     toast({ description: 'Registered' });
     return redirect('/login');
   } catch (error) {
-    // console.log(error);
 
     const errorMsg =
       error instanceof AxiosError

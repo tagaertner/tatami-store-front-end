@@ -23,19 +23,6 @@ function ComplexPaginationContainer() {
 
   if (pageCount < 2) return null;
 
-  // const renderPagination = pages.map((pageNumber) => {
-  //   const isActive = pageNumber === page;
-  //   const url = constructUrl(pageNumber, search, pathname);
-
-  //   return (
-  //     <PaginationItem key={pageNumber}>
-  //       <PaginationLink to={url} isActive={isActive}>
-  //         {pageNumber}
-  //       </PaginationLink>
-  //     </PaginationItem>
-  //   );
-  // });
-
   const constructButton = ({
     pageNumber,
     isActive,
@@ -63,21 +50,18 @@ function ComplexPaginationContainer() {
 
   const renderPagination = () => {
    const pages: React.ReactNode[] = [];
-    // first page
+ 
     pages.push(constructButton({ pageNumber: 1, isActive: page === 1 }));
-    // ellipsis
+ 
     if (page > 2) {
       pages.push(constructEllipsis('dots-1'));
     }
-    // active page
     if (page !== 1 && page !== pageCount) {
       pages.push(constructButton({ pageNumber: page, isActive: true }));
     }
-    // ellipsis
     if (page < pageCount - 1) {
       pages.push(constructEllipsis('dots-2'));
     }
-    // last page
     pages.push(
       constructButton({ pageNumber: pageCount, isActive: page === pageCount })
     );
